@@ -1,0 +1,28 @@
+var createCompany =  "#{escape_javascript(render :partial => 'listitem', locals: {:c => @rec_company})}"
+
+$('.section-content').show()
+\// $('.list-section-body').prepend(createCompany)
+
+notification("#{flash[:notice]}")
+
+
+$('.companies-count span').text("#{current_recruiter.company_specs.count}")
+var url = document.location.href;
+if (url.includes('jobs') == false) {
+$('.list-section-body').prepend(createCompany)
+removeInside($('.modal-id'));
+$('.section-modal').hide();
+} else{
+$.ajax({
+url: "#{recruiter_get_last_company_path}",
+dataType: "json",
+success: function(result) {
+$('#company_specs')
+\.append($("
+%option>
+")
+\.attr("value", result.company['id'])
+\.text(result.company['name']));
+}
+});
+}

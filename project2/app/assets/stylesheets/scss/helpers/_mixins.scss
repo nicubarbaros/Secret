@@ -1,0 +1,111 @@
+@mixin cf {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin push--auto {
+  margin: { 
+    left: auto;
+    right: auto;
+  }
+}
+
+$breakpoints: (
+  "phone":        400px,
+  "phone-wide":   480px,
+  "phablet":      560px,
+  "tablet-small": 640px,
+  "tablet":       768px,
+  "tablet-wide":  1024px,
+  "desktop":      1248px,
+  "desktop-wide": 1440px
+);
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+     @warn "If map_has_key";
+  }
+
+  @if $type == max {
+      $width: $width - 1px;
+  }
+    
+  @media only screen and (#{$type}-width: $width) {
+      @content;
+  }
+}
+
+
+@mixin transform($val) {
+  -webkit-transform: $val;
+  -moz-transform: $val;
+  -ms-transform: $val;
+  transform: $val;
+}
+
+
+@mixin transition( $val : ease 0.5s ) {
+  -webkit-transition: $val;
+  -moz-transition:$val;
+  -o-transition:$val;
+  -ms-transition:$val;
+  transition:$val;
+}
+
+@mixin font--source($size: false, $colour: false, $weight: false,  $lh: false) {
+  font-family: $roboto, Helvetica, Arial, sans-serif;
+  @if $size { font-size: $size; }
+  @if $colour { color: $colour; }
+  @if $weight { font-weight: $weight; }
+  @if $lh { line-height: $lh; }
+}
+
+@mixin padding--mixin($some-number: false, $top: false, $right: false, $bottom: false, $left: false) {
+  padding: 0;
+  @if $some-number {padding: $some-number; }
+  @else {
+    @if $top {padding-top: $top; }
+    @if $right {padding-right: $right; }
+    @if $bottom {padding-bottom: $bottom; }
+    @if $left {padding-left: $left; }
+  }
+}
+
+@mixin margin--mixin($some-number: false, $top: false, $right: false, $bottom: false, $left: false) {
+  margin: 0;
+  
+  @if $some-number {margin: $some-number; }
+  @else {
+    @if $top {margin-top: $top; }
+    @if $right {margin-right: $right; }
+    @if $bottom {margin-bottom: $bottom; }
+    @if $left {margin-left: $left; }
+  }
+}
+
+@mixin responsive--ratio($x,$y, $pseudo: false) {
+  $padding: unquote( ( $y / $x ) * 100 + '%' );
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+      padding-top: $padding;
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin content {
+  content: '';
+}

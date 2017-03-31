@@ -1,0 +1,25 @@
+#instagram-feed{
+  a {
+    &:after{
+      content: "";
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: -100%;
+      left: 0;
+      z-index: 100;
+      background-color: rgba($brand-color, 0.5);
+      @include transition(all 0.25s);
+    }
+
+    &:hover {
+      &:after{
+       top: 0;
+      }
+    }
+  }
+
+  .owl-item {
+    min-height: 100%;
+  }
+}

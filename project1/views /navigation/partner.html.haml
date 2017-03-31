@@ -1,0 +1,50 @@
+- partner_brief = localize_attr(@partner, 'brief')
+
+= set_meta_tags(@partner.name, partner_brief, @partner.logo.url(:medium))
+.content--below-header
+  %section.cover.page--cover
+    .cover--image{:style => "background-image: url('#{@partner.background_image}');"}
+    .cover--info
+      .content--wrapper.content--padding
+        %h2.section--header.text--white.item--center.bottom--line
+          = t('.titles.header');
+        .header--title.text--white
+          = @partner.name
+        .small--content-wrapper
+          .section--description.description--container
+            %p.text--white
+              = partner_brief
+        %span.arrow--down
+
+  %section.section--large
+    .small--content-wrapper
+      .section--description.description--container.text--grey
+        = raw localize_attr(@partner, 'description')
+
+  %section.over--image-wrapper
+    .image--container{:style => "background-image: url('#{@partner.contact_image}');"}
+    .content--wrapper.content--padding
+      .content
+        %h2.section--header.text--grey.item--center.bottom--line
+          = t('.titles.contact');
+        .contacts--box
+          .address
+            = @partner.address
+          .phone
+            = @partner.phone
+          .email
+            = @partner.email
+
+          = render :partial => 'layouts/socials_list', locals: {facebook:  @partner.facebook_url, instagram: @partner.instagram_url, twitter: @partner.twitter_url}
+
+  %section.section--action
+    .content--wrapper.flex--wrapper.content--padding
+      .action--wrapper
+        .header--title.text--grey
+          = t('.cta.title');
+        .small--content-wrapper
+          .section--description.description--container
+            %p.text--grey 
+              = t('.cta.description');
+        .btn--wrap.btn--fix-width
+          = link_to t('.cta.btn'), @partner.website, class: 'btn btn--primary', target: '_blank'

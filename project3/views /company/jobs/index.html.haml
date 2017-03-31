@@ -1,0 +1,41 @@
+- content_for :title, t('.page_title')
+
+.section-add-item
+  .container-flexible
+    .inner-container
+      .add-item-wrapper
+        .col-grid.col-6
+          .add-item-button
+            = link_to t('.create_job'), new_company_job_path, :class => "add-item", :remote => true
+        .col-grid.col-1
+          %span
+            = t('addsection.candidate')
+        .col-grid.col-1
+          %span
+            = t('addsection.created')
+        .col-grid.col-2
+          %span
+            = t('addsection.focus')
+
+= render :partial => 'layouts/modal', :locals => {:m_id => 'new-job'}
+
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .section-content{:style => @company.job_lists.recents.empty? ? 'display: none;' : ''}
+        .section-header
+          .col-grid.col-10
+            %h3
+              = t('.latest')
+        .list-section-body
+          - @company.job_lists.recents.sort{|l, r| r.created_at <=> l.created_at}.each do |jl|
+            = render :partial => 'listitem', :locals => {:jl => jl}
+
+      .section-content{:style => @company.job_lists.empty? ? 'display: none;' : ''}
+        .section-header
+          .col-grid.col-10
+            %h3
+              = t('.all')
+        .list-section-body
+          - @company.job_lists.sort{|l, r| r.created_at <=> l.created_at}.each do |jl|
+            = render :partial => 'listitem', :locals => {:jl => jl}

@@ -1,0 +1,36 @@
+<div class="main-content">
+  <div class="cart">
+
+    <div *ngIf=cartItems id='cart-items'>
+      <div class="cart-header">
+        <h2>Shooping Cart</h2>
+        <p>Manage your item list</p>
+      </div>
+      <div class="cart-list-item"*ngFor='let item of cartItems' id={{item.type}}-{{item.id}}>
+        <div class="item-thumbnail">
+          <img src="{{apiHostName}}{{item.image}}">
+        </div>
+        <div class="item-details">
+          <div class="item-name">
+            {{item.name}}
+          </div>
+          <div class="item-type">
+            {{item.type}}
+          </div>
+        </div>
+
+        <div class="item-price">
+          MDL {{item.price}}
+        </div>
+        <div class="form-group">
+          <input (change)="onChange($event.target.value, item)" type="number" name="quantity" value={{item.quantity}}>
+        </div>
+        <button (click)="removeItem(item.type, item.id, item.size); deleteItem(item)">Sterge</button>
+      </div>
+    </div>
+    <h1>Contact form</h1>
+    <cart-form  #contactForm ></cart-form>
+    <button  (click)= "pay(contactForm.cartForm.value.name, contactForm.cartForm.value.surname, contactForm.cartForm.value.phone, contactForm.cartForm.value.email)" [disabled]="!contactForm.cartForm.valid">Achită</button>
+    <div class="error-message">{{errorMessage}}</div>
+  </div>
+</div>

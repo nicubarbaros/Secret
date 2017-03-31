@@ -1,0 +1,53 @@
+.pricing {
+
+  padding: 72px 0;
+  
+  .pricing-box {
+    @include box-shadow(0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23));
+    background-color: #fff;
+  }
+  .pricing-box-header {
+    background: $top-nav-text-color;
+    padding: 36px;
+
+    .pricing-title, .pricing-price {
+      color: white;
+    }
+
+    .pricing-price {
+      padding: 0;
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .pricing-box-content {
+    padding: 36px;
+    color: $main-color;
+    
+
+    span {
+      margin-bottom: 15px;
+    }
+    
+    h5, p {
+      padding-bottom: 15px;
+    }
+
+    p {
+      padding-left: 0;
+    }
+  }
+
+  .bottom-box-section {
+
+    a {
+      font-size: 12px;
+      line-height: 16px;
+    }
+    @include clearfix;
+    padding-top: 21px;
+  }
+}

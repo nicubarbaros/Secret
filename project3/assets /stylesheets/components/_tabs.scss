@@ -1,0 +1,85 @@
+.category-tabs {
+  position: relative;
+    @include clearfix;
+
+  &::after {
+    /* subtle gradient layer on top right - to indicate it's possible to scroll */
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: $tabs-btn-height-S; // see variables inside partials > _variables.scss
+    z-index: 1;
+    pointer-events: none;
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+    -moz-transition: opacity .3s 0s, visibility 0s 0s;
+    transition: opacity .3s 0s, visibility 0s 0s;
+
+    .no-cssgradients & {
+      display: none;
+    }
+  }
+
+  &.is-ended::after {
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+    -moz-transition: opacity .3s 0s, visibility 0s .3s;
+    transition: opacity .3s 0s, visibility 0s .3s;
+  }
+
+  nav {
+    overflow: auto;
+    border-bottom: 1px solid $border-color;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+}
+
+
+
+.tabs-navigation {
+  text-align: center;
+
+  @include clearfix;
+
+  li {
+    @include inline-flex();
+  }
+
+  a {
+    
+    position: relative;
+    display: block;
+    font-family: $roboto;
+    font-size: 14px;
+    text-align: center;
+    font-weight: normal;
+    line-height: 1;
+    color: $section-title-color;
+    padding: 12px 36px;
+
+    .no-touch &:hover {
+      color: $color-3;
+      background-color: rgba(darken($color-1, 10%), .3);
+    }
+
+    &.selected {
+      border-bottom: 2px solid $brand-color;
+    }
+  }
+}
+
+.tabs-content {
+
+  li {
+    display: none;
+
+    &.selected {
+      display: block;
+    }
+  }
+}

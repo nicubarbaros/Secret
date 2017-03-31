@@ -1,0 +1,12 @@
+- unless @event.external_link.blank?
+  %section.section--action
+    .content--wrapper.flex--wrapper.content--padding
+      .action--wrapper
+        .header--title{style: "color: #{event.event_subcategory.color}"}
+          = t('navigation.event.cta.title')
+        .small--content-wrapper
+          .section--description.description--container
+            %p.text--grey 
+              = t('navigation.event.cta.description')
+        .btn--wrap.btn--fix-width
+          = link_to t('navigation.event.cta.btn'), @event.external_link, class: 'btn btn--primary', target: '_blank'

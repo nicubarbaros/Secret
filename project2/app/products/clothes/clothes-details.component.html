@@ -1,0 +1,22 @@
+<div class="main-content">
+  <div *ngIf="clothing">
+    <p>{{clothing.description}}</p>
+    <p>{{clothing.name}}</p>
+
+    <p>{{clothing.price}}</p>
+    <div *ngFor="let spec of clothing.specs">
+      <img src="{{apiHostName}}{{spec.image}}" (click)="pickSpec(spec)">
+      <p>{{spec.color}}</p>
+      <p>{{spec.size}}</p>
+    </div>
+
+    <div *ngIf="selectedSpec">
+      <input #quantity type="number" name="quantity" value=1 min="1" step="1" placeholder="Quantity"><br>
+      <select #size name="size">
+        <option *ngFor="let s of sizeOptions">{{s}}</option>
+      </select>
+      <button (click)="addToCart(clothing.type, selectedSpec.id, quantity.value, sizeOptions[size.selectedIndex].trim())">Add To Cart</button>
+      <a [routerLink]="['/basket']">Proceed ot checkout</a>
+    </div>
+  </div>
+</div>

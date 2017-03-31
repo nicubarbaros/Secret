@@ -1,0 +1,103 @@
+.section-modal {
+  display: none;
+}
+
+.modal-wrapper {
+  overflow: auto;
+  .modal-overlay {
+    background-color: rgba(37,40,43,0.6);
+  }
+}
+
+.modal-wrapper, .modal-overlay {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.modal {
+  max-width: 400px;
+  margin: 0 auto;
+  margin: 10vh auto;
+  position: relative;
+  z-index: 1000;
+  border: 0;
+  @include box-shadow(0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23));
+  background-color: #fff;
+  padding: 36px;
+
+  .modal-x {
+    top: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    background: none;
+    @include border-radius(50%);
+    position: absolute;
+    cursor: pointer;
+    display: block;
+    
+    &:hover {
+      background: $border-color;
+    }
+
+    span {
+      display: block;
+      width: 12px;
+      height: 12px;
+      background: asset-url("icons/close-x.svg") no-repeat;
+      z-index: 1000;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -6px;
+      margin-left: -6px;
+      text-indent: -9999px;
+    }
+  }
+  .modal-box {
+    position: relative;
+    padding-top: 24px;
+  }
+
+  .modal-content {
+    background: white;
+    line-height: 1.8em;
+    font-size: 13px;
+  }
+
+  .modal-id {
+    form {
+      @include clearfix;
+    }
+  }
+}
+
+.credential-form{
+  width: 100%;
+  position: relative;
+}
+
+#show-form {
+  span {
+    text-align: center;
+    display: block;
+    margin: 20px 0;
+    cursor: pointer;
+
+    &:hover{
+      color: $brand-color;
+    }
+  }
+}
+.new-company {
+  display: none;
+
+  &.isShown {
+    display: block;
+  }
+}
+

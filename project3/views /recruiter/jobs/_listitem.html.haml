@@ -1,0 +1,19 @@
+.list-item.bottom-border{:id => "itemid-#{j.id}"}
+  .col-grid.col-4
+    .title
+      = link_to j.name, recruiter_job_path(j)
+  .col-grid.col-1
+    %span
+      = j.candidates.count
+  .col-grid.col-1
+    %span
+      = j.created_at.strftime("%d %b %Y")
+  .col-grid.col-1
+    %span.important
+      = t("alg.focus.#{j.focus.downcase}")
+  .col-grid.col-2
+    %span
+      - if j.company_spec
+        = j.company_spec.name
+  .col-grid.col-1
+    = render :partial => 'layouts/optionbox', :locals => {:delete => recruiter_job_path(j), :edit => edit_recruiter_job_path(j)}

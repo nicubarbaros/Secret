@@ -1,0 +1,67 @@
+- title = localize_attr(@partner_content, 'header_title')
+= set_meta_tags(title, *get_localized_meta_for_obj(@meta_info))
+
+= render partial: 'layouts/modal', locals: {m_id: 'partnership--form-modal'}
+
+.content--below-header
+  %section.cover.page--cover
+    .cover--image{:style => "background-image: url('#{@partner_content.image}');"}
+    .cover--info
+      .content--wrapper.content--padding
+        %h2.section--header.text--white.item--center.bottom--line
+          = last_uri_segment
+        .header--title.text--white
+          = title
+        .small--content-wrapper
+          .section--description.description--container
+            %p.text--white
+              = localize_attr(@partner_content, 'header_brief')
+        %span.arrow--down
+
+  %section.section--large
+    .content--wrapper.description--wrapper
+      %h2.section--header.text--grey.item--center.bottom--line
+        = t('.titles.about')
+      .description--container.text--grey
+        = raw localize_attr(@partner_content, 'description')
+  
+  = render partial: 'layouts/testimonials'
+
+  %section.section--action
+    .content--wrapper.flex--wrapper.content--padding
+      .action--wrapper
+        .header--title.text--grey
+          = t('.cta.title')
+        .small--content-wrapper
+          .section--description.description--container
+            %p.text--grey 
+              = t('.cta.description')
+        .btn--wrap.btn--fix-width
+          = link_to t('.cta.btn'), partnership_popup_path, remote: true, class: 'btn btn--primary', target: '_blank'
+
+  %section.over--image-wrapper
+    .image--container{:style => "background-image: url('#{@main_partner.background_image}');"}
+    .content--wrapper.content--padding
+      .content
+        %h2.section--header.text--grey.item--center.bottom--line
+          = t('.titles.main_partner')
+        .description--container
+          %p.text--grey 
+            "
+            = localize_attr(@main_partner, 'brief')
+            "
+        .btn--text.primary
+          = link_to t('buttons.partners'), partner_path(@main_partner.slug)
+  
+  = render partial: 'layouts/partners_list', locals: {partners: @annual_partners, header: t('.titles.annual_partners')}               
+  = render partial: 'layouts/partners_list', locals: {partners: @past_collaborations, header: t('.titles.collaborations')}
+
+
+
+
+
+/ %h2= 'Annual Partners'
+/ - @annual_partners.each do |partner|
+/   = image_tag partner.logo.url(:thumb)
+/   = localize_attr(partner, 'brief')
+/   = link_to 'More Details', partner_path(partner.slug)

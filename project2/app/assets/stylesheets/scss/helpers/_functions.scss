@@ -1,0 +1,12 @@
+@function em($target, $context) {
+  @return #{$target/$context}em;
+}
+
+@function rem($target) {
+  $baseSize: 16;
+  @return #{$target/$baseSize}rem;
+}
+
+@function flex-width($target, $context) {
+  @return (($target/$context)*100%);
+}

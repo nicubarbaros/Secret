@@ -1,0 +1,37 @@
+.active--event-wrapper {
+	@include flexbox;
+	@include align-items(center);
+	@include justify-content(center);
+	@include flex-wrap(wrap);
+	height: 60px;
+
+	background-color: $black-background;
+
+	.event--title {
+		@include font--source(em(12,14), false, 400, 1.25);
+		text-transform: uppercase;
+		text-align: center;
+		margin: 0 rem($mobile-border-padding);
+
+		a {
+			&:hover{
+			color: $brand-color;
+			} 
+		}
+	}
+
+	.event--link {
+		display: none;
+	}
+
+	@include mq('tablet-wide', 'min') {
+		.event--title {
+			font-size: 1em;
+			margin-right: rem(50);
+		}
+
+		.event--link {
+			display: block;
+		}
+	}
+}

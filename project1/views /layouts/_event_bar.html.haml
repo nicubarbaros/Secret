@@ -1,0 +1,9 @@
+- event = Event.applications_open.sample
+
+- unless event.nil?
+  - title = localize_attr(event, 'title')
+  .active--event-wrapper
+    .event--title
+      = link_to title, event_path(event.event_subcategory.event_category, event.event_subcategory, event), class: 'text--white'
+    .btn--text.secondary
+      = link_to 'Vezi event', event_path(event.event_subcategory.event_category, event.event_subcategory, event)

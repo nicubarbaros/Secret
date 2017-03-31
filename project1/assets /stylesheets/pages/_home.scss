@@ -1,0 +1,61 @@
+.home-page {
+	.cover:not(.cover--image) {
+		@include justify-content(center);
+	}
+	.cover,
+	.cover .cover--image {
+		min-height: $vh;
+	}
+
+	.cover--info {
+		@include margin--mixin();
+	}
+}
+
+.home--cover {
+	.header--welcome-message{
+		@include font--source(em(12,14), $text-white-color, 500, initial);
+
+		@include mq('tablet-wide', 'min') {
+			font-size: em(24,14);
+		}
+	}
+
+	.header--title {
+		@include font--source(em(30,14), $brand-color, 900, initial) ;
+		@include margin--mixin($top: rem(10), $bottom: rem(15));
+
+		@include mq('tablet-wide', 'min') {
+			font-size: em(60,14);
+			margin-bottom: rem(30);
+		}
+	}
+
+	.header--brief {
+		max-width: 330px;
+		margin: 0 auto;
+
+		@include mq('phablet', 'min') {
+			margin: 0;
+		}
+	}
+
+
+	.cover--info {
+		@include mq('phablet', 'min') {
+	    text-align: left;
+	  }
+	}
+}
+
+
+.home--partner {
+	margin-bottom: rem(50);
+
+	@include mq('tablet-wide', 'min') {
+		margin-bottom: rem(100);
+	}
+}
+
+
+

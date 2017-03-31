@@ -1,0 +1,38 @@
+- category_title = localize_attr(@category, 'title')
+- category_description = localize_attr(@category, 'description')
+
+= set_meta_tags(category_title, category_description, @category.image.url(:medium))
+
+.events--wrapper.content--below-header#categories
+  %section.cover.page--cover
+    .cover--image{:style => "background-image: url('#{@category.image}');"}
+    .cover--info
+      .content--wrapper.content--padding
+        %h2.section--header.text--white.item--center.bottom--line
+          = @category._type
+          / = last_uri_segment
+        .header--title.text--white
+          = category_title
+        %span.arrow--down
+
+  %section.section--large
+    .content--wrapper.description--wrapper
+      %h2.section--header.text--grey.item--center.bottom--line
+        = t('.titles.about')
+      .description--container
+        %p.text--grey
+          = category_description  
+  - unless @category.event_subcategories.blank?
+    %section.section--half
+      .content--wrapper.flex--wrapper
+        - @category.event_subcategories.each do |subcategory|
+          .flex--item-container
+            .item--image{:style => "background-image: url('#{subcategory.image}');"}
+            .item--panel-content
+              .item--title
+                = link_to subcategory.name, event_subcategory_path(subcategory.event_category, subcategory)
+
+            = link_to image_tag("#{subcategory.icon}", class: 'item--icon'), event_subcategory_path(subcategory.event_category, subcategory)
+           
+            = link_to event_subcategory_path(subcategory.event_category, subcategory), class: 'item--panel-cover', style: "background-color: #{subcategory.color}" do
+              %span

@@ -1,0 +1,50 @@
+<div *ngFor="let item of items">
+    <h2> Subscribers = {{item.statistics.subscriberCount}}</h2>
+    <h2> Video Count = {{item.statistics.videoCount}}</h2>
+    <h2> View Count = {{item.statistics.viewCount}}</h2>
+</div>
+<div class="video-container-full">
+  <div class="video-container">
+    <div class="grid-module video-grid-module" *ngIf="withStats">
+      <div class="video-module item-column-6" *ngFor="let v of withStats">
+        <div class="outer-video-container slide-in" *ngFor="let video of v.items ">
+          <div class="inner-video-container ">
+            <div class="video-thumbnail" [ngStyle]="{'background-image': 'url(' + video.snippet.thumbnails.high.url + ')'}">
+            </div>
+              <!-- <img class="video-thumbnail" src="{{video.snippet.thumbnails.high.url}}"> -->
+            <a [routerLink]="['/video', video.id]">
+              <div class="black-panel">
+                <div class="video-details-section">
+                  <ul class="video-status">
+                    <li class="video-views">
+                      <h5>{{video.statistics.viewCount}} de vizionări </h5>
+                    </li>
+                    <li class="circle">
+                      <span></span>
+                    </li>
+                    <li class="video-published-date">
+                      <h5>{{convertDate(video.snippet.publishedAt)}}</h5>
+                    </li>
+                    <li  class="video-duration">
+                      <h5>{{convertVideoDuration(video.contentDetails.duration)}}</h5>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="video-title">
+            <a [routerLink]="['/video', video.id]">
+              {{video.snippet.localized.title}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="button-with-border">
+      <a [routerLink]="['/videos']">VEZI TOATE</a>
+    </div>
+  </div>
+</div>
+
+

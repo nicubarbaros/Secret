@@ -1,0 +1,12 @@
+%h2.section--header.item--center.bottom--line
+  = t('navigation.faq.title')
+.faq--wrapper
+  - faqs.each do |f|
+    .faq--block
+      .question
+        %p
+          = localize_attr(f, 'question')
+      .answer
+        %p
+          = localize_attr(f, 'answer')
+

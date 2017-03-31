@@ -1,0 +1,25 @@
+.notifyjs-wrapper {
+
+	.notifyjs-custom-base {
+
+		background-color: white;
+		white-space: nowrap;
+		@include padding--mixin($left: rem(5), $right: rem(5));
+	}
+
+	span {
+		@include font--source(em(8,14), false, 300, 20px);
+		text-transform: uppercase;
+	}
+
+	@include mq('phone-wide', min) {
+
+		.notifyjs-custom-base {
+			@include padding--mixin($left: rem(30), $right: rem(30));
+		}
+		span {
+			font-size: 1em;
+			line-height: 50px;
+		}
+	}
+}

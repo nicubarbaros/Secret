@@ -1,0 +1,23 @@
+<div class="main-content">
+  <div *ngIf="sticker">
+    {{sticker.cover_img}}
+    <div *ngIf="sticker.image_1">
+      <img src="{{apiHostName}}{{sticker.image_1}}">
+    </div>
+    <div *ngIf="sticker.image_2">
+      <img src="{{apiHostName}}{{sticker.image_2}}">
+    </div>
+    <div *ngIf="sticker.image_3">
+       <img src="{{apiHostName}}{{sticker.image_3}}">
+    </div>
+
+    <p>{{sticker.name}}</p>
+    <p>{{sticker.price}}</p>
+    <p>{{sticker.size}}</p>
+    <p>{{sticker.type}}</p>
+    <input #quantity type="number" name="quantity" value=1 min="1" step="1" placeholder="Quantity"><br>
+    
+    <button (click)="addToCart(sticker.type, sticker.id, quantity.value, sticker.size)">Add To Cart</button>
+    <a [routerLink]="['/basket']">Proceed ot checkout</a>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+.list-item.bottom-border{:id => candidate.id}
+  .col-grid.column-1
+    - unless candidate.scores.include?(0)
+      .candidate-status
+        = image_tag 'icons/quest-more.svg'
+    - else
+      .candidate-status
+        = image_tag 'icons/quest-none.svg'
+  .col-grid.column-3
+    .title
+      = link_to "#{candidate.firstname} #{candidate.lastname}", edit_recruiter_job_candidate_path(job, candidate)
+  .col-grid.column-1
+    - if @job.company_spec
+      - if candidate.answers.count > 0
+        - p, t, o = candidate.scores
+        - finals = [p*multiplier.coef_personal, t*multiplier.coef_team, o*multiplier.coef_organizational]
+        - total = finals.inject(0, :+)
+
+        %span
+          = "#{'%.3f' % total}"
+
+  .col-grid.column-1
+    = render :partial => 'layouts/optionbox', :locals => {:delete => recruiter_job_candidate_path(job, candidate), :edit => edit_recruiter_job_candidate_path(job, candidate)}

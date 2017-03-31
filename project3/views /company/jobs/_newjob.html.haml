@@ -1,0 +1,27 @@
+- content_for :title, t('company.jobs.new.page_title')
+
+= simple_form_for @job, :url => company_jobs_path, :method => 'post', :remote => true do |f|
+  .credential-form
+    .text-input-wrapper
+      = f.input :name, autofocus: true, label: t('company.jobs.new.name'), :required => true
+    .text-input-wrapper
+      = f.input :description, label: t('company.jobs.new.description'), :required => false 
+    .text-input-wrapper
+      .tips
+        .tips-icon
+          .tips-info
+            %p
+              = t('company.jobs.tips.execution')
+            %p
+              = t('company.jobs.tips.management')
+            %p
+              = t('company.jobs.tips.client')
+            %p
+              = t('company.jobs.tips.development')
+
+      = f.input :focus, collection: [[t('alg.focus.execution'), 'Execution'], [t('alg.focus.management'), 'Management'], [t('alg.focus.client'), 'Client'], [t('alg.focus.development'), 'Development']], :include_blank => false, label: t('company.jobs.new.focus')
+    .text-input-wrapper
+      = f.hidden_field :company_spec_id, value: @company.company_spec.id
+      = f.hidden_field :owner_type, value: 'Company'
+    .submit-button
+      = f.submit t('buttons.create')

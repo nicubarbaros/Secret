@@ -1,0 +1,24 @@
+- unless @event.event_team_members.blank?
+  %section.section--large.organizers--section
+    %h2.section--header.item--center.bottom--line
+      = t('navigation.event.titles.team')
+    .content--wrapper.flex--wrapper
+      - @event.event_team_members.each do |member|
+        .organizer--wrapper
+          .member--photo{:style => "background-image: url('#{member.image}');"}
+            .item--panel-cover{:style => "background-color: #{@event.event_subcategory.color}"}
+              %span
+            - unless (member.phone && member.email).blank?
+              .member--contacts
+                - unless member.phone.blank?
+                  = link_to 'Phone', 'javascript:;', class: 'member--popup member--phone', "data-title" => "#{member.phone}", "data-color" => "#{@event.event_subcategory.color}"
+                - unless member.email.blank?
+                  = link_to 'Email', 'javascript:;', class: 'member--popup member--email', "data-title" => "#{member.email}", "data-color" => "#{@event.event_subcategory.color}"
+
+          .member--description 
+            .position.text--grey
+              = localize_attr(member, 'position')
+            .name{:style => "color: #{@event.event_subcategory.color}"}
+              = member.full_name
+
+       

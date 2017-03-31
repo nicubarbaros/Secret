@@ -1,0 +1,48 @@
+<div class="main-content">
+  <h1 class="page-title">Toate produsele</h1>
+  <div class="collection-products" *ngIf="products">
+    <!-- <div *ngIf="products.accessories"> -->
+      <!-- <a [routerLink]="['/products/accessories']">All products</a> -->
+      <div class="product-list-item item-column-4" *ngFor="let product of products">
+        <div class="sticker-list-item" *ngIf="product.type === 'sticker'">
+          <figure class="product-list-item-thumbnail"> 
+            <a [routerLink]="['/products/sticker', product.id]"> 
+              <img src="{{apiHostName}}{{product.cover_image}}">
+            </a>
+          </figure>
+         </div>
+        <div class="clothes-list-item" *ngIf="product.type === 'clothes'">
+          <figure class="product-list-item-thumbnail"> 
+            <a [routerLink]="['/products/clothing', product.id]"> 
+              <img src="{{apiHostName}}{{product.cover_image}}">
+            </a>
+          </figure>
+        </div>
+        <div class="cup-list-item" *ngIf="product.type === 'cup'">
+          <figure class="product-list-item-thumbnail"> 
+            <a [routerLink]="['/products/cup', product.id]"> 
+              <img src="{{apiHostName}}{{product.cover_image}}">
+            </a>
+          </figure>
+        </div>
+        <div class="accessory-list-item" *ngIf="product.type === 'accessory'">
+          <figure class="product-list-item-thumbnail"> 
+            <a [routerLink]="['/products/accessory', product.id]"> 
+              <img src="{{apiHostName}}{{product.cover_image}}">
+            </a>
+          </figure>
+        </div>
+        <div class="product-list-item-details">
+          <p class="product-list-item-type">
+            {{product.type}}
+          </p>
+          <h2 class="product-list-item-name">
+            {{product.name}}
+          </h2>
+          <p class="product-list-item-price">
+            {{product.price}} MDL
+          </p>
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+= simple_form_for @candidate, :url => recruiter_job_candidate_path, :method => 'put' do |f|
+  .credential-form
+    .text-input-wrapper
+      = f.input :firstname, label: t('recruiter.candidates.edit.firstname')
+    .text-input-wrapper
+      = f.input :lastname, label: t('recruiter.candidates.edit.lastname')
+    .submit-button
+      = f.submit

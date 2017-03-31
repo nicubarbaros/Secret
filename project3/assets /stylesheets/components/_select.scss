@@ -1,0 +1,78 @@
+
+.input, .text-input-wrapper   {
+  .s-hidden {
+    visibility:hidden;
+    padding-right:10px;
+  }
+
+  .selects {
+    cursor:pointer;
+    position:relative;
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+  .styledSelect {
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-color:white;
+    font-family: $roboto;
+    font-size: 12px;
+    padding-left: 10px;
+    padding-top: 10px;
+    line-height: 1;
+
+  }
+
+  .styledSelect:after {
+    content:"";
+    width:0;
+    height:0;
+    border:5px solid transparent;
+    border-color:black transparent transparent transparent;
+    position:absolute;
+    top:9px;
+    right:6px;
+  }
+
+  .styledSelect:active, .styledSelect.active {
+    background-color: $hover-color;
+  }
+
+  .options {
+    display: none;
+    position: absolute;
+    top:100%;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0 ;
+    padding: 0 ;
+    list-style:none;
+    background-color:white;
+    @include box-shadow(0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12));
+  }
+
+  .options li {
+    padding:0 6px;
+    margin:0 0;
+    padding:0 10px;
+    font-family: $roboto;
+    font-size: 12px;
+
+    &:hover {
+      background-color: $brand-color;
+      color:white;
+    }
+  }
+}
+
+
+
+
+
+
+
+

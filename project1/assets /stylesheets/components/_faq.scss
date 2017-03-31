@@ -1,0 +1,34 @@
+.faq--wrapper {
+
+  p {
+    @include font--source(em(12,14), $text-color, 500, 2em);
+  }
+  .question p{
+    margin-bottom: rem(10);
+  }
+
+  .answer p {
+    @include flexbox;
+    @include align-items(center);
+    font-size: em(16,14);
+    font-weight: 300;
+
+    &:before {
+      @include margin--mixin($right: 6%);
+      content: '\2713';
+      width: 8px;
+      height: 1em;
+    }
+  }
+
+
+  .faq--block {
+    @include margin--mixin($bottom: rem(15));
+  }
+
+  @include mq('tablet-wide', min) {
+    .faq--block {
+      @include margin--mixin($bottom: rem(30));
+    }
+  }
+}

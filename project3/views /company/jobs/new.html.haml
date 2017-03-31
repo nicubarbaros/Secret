@@ -1,0 +1,16 @@
+- content_for :title, t('company.jobs.new.page_title')
+
+= form_for @job, :url => company_jobs_path do |f|
+  %p
+    = f.label t('.name')
+    = f.text_field :name, required: true
+  %p
+    = f.label t('.description')
+    = f.text_field :description
+  %p
+    = f.label t('.focus')
+    = f.select :focus, options_for_select([[t('alg.focus.execution'), 'Execution'], [t('alg.focus.management'), 'Management'], [t('alg.focus.client'), 'Client'],[t('alg.focus.development'), 'Development']])
+    = f.hidden_field :company_spec_id, value: @company.company_spec.id
+    = f.hidden_field :owner_type, value: 'Company'
+  %br
+  = f.submit t('buttons.create')

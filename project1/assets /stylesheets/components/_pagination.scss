@@ -1,0 +1,31 @@
+.pagination--wrapper {
+	@include flexbox;
+	@include justify-content(center);
+	@include padding--mixin($top: rem(50));
+
+	nav {
+		@include inline-flex;
+	}
+
+	a {
+		color: $text-color;
+		width: $element_width;
+    text-align: center;
+
+    &:hover {
+    	color: $brand-color;
+    }
+	}
+	span {
+		@include font--source(em(18,14), $text-color, 500, 32px);
+		@include inline-flex;
+		@include justify-content(center);
+		min-width: $element_width;
+		margin: 0 rem(10);
+	}
+
+	.current {
+		background: $current_background;
+		color: white;
+	}
+}

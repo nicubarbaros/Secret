@@ -1,0 +1,17 @@
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .passwords-wrapper
+        .col-grid.col-4
+          .passwords-form
+            = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+              %h2.statement-header
+                = t('recruiter.sessions.index.pass_forgot') 
+              .credential-form
+                = f.error_notification
+                .text-input-wrapper
+                  = f.input :email, required: true, autofocus: true, label: t('recruiter.sessions.index.email')
+                .extra-links
+                  = render "recruiter/shared/links"
+                .submit-button
+                  = f.button :submit, t('buttons.send')

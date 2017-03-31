@@ -1,0 +1,40 @@
+= set_meta_tags(@events.first.event_subcategory.name, nil, @events.first.event_subcategory.image.url(:medium))
+
+
+%style{:media => "screen"}
+  \.bottom--line::after{border-color: #{@events.first.event_subcategory.color};} 
+
+.events--wrapper.content--below-header#subcategories
+  - unless @active_event.nil?
+    %section.cover.page--cover
+      .cover--image{:style => "background-image: url('#{@active_event.image}');"}
+      .cover--info
+        .content--wrapper.content--padding
+          %h2.section--header.text--white.item--center.bottom--line
+            = t('.titles.active')
+          .header--title
+            = link_to localize_attr(@active_event, 'title'), event_path(@active_event.event_subcategory.event_category, @active_event.event_subcategory, @active_event), class: 'text--white'
+          .small--content-wrapper
+            .section--description.description--container
+              %p.text--white
+                = localize_attr(@active_event, 'brief')
+  - unless @events.nil?
+    %section.section--large
+      .small--content-wrapper.archive--list
+        - @events.each do |event|
+          %article
+            .article--image
+              %span{:style => "background-image: url('#{event.image}');"}
+            .article--info
+              = link_to localize_attr(event, 'title'), event_path(event.event_subcategory.event_category, event.event_subcategory, event), style: "color: #{event.event_subcategory.color}"
+              .date
+                = l(event.created_at, format: '%B %d, %Y')
+              .description--container
+                %p 
+                  = localize_attr(event, 'brief')
+
+        .pagination--wrapper
+          = paginate @events, window: 2
+/ %section.section--large
+/   %h2.section--header.item--center.bottom--line
+/     = t('page.events.subcategories.titles.statisticsa')

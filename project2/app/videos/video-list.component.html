@@ -1,0 +1,49 @@
+<div class="main-content">
+  <div class="grid-module video-grid-module" *ngIf="withStats">
+    <div class="video-module item-column-4" *ngFor="let v of withStats">
+      <div class="outer-video-container slide-in" *ngFor="let video of v.items">
+        <div class="inner-video-container">
+          <div class="video-thumbnail" [ngStyle]="{'background-image': 'url(' + video.snippet.thumbnails.high.url + ')'}">
+          </div>
+          <a [routerLink]="['/video', video.id]">
+            <div class="black-panel">
+              <div class="video-details-section">
+                <ul class="video-status">
+                  <li class="video-views">
+                    <h5>{{video.statistics.viewCount}} de vizionări </h5>
+                  </li>
+                  <li class="circle">
+                    <span></span>
+                  </li>
+                  <li class="video-published-date">
+                    <h5>{{convertDate(video.snippet.publishedAt)}}</h5>
+                  </li>
+                  <li  class="video-duration">
+                    <h5>{{convertVideoDuration(video.contentDetails.duration)}}</h5>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="video-title">
+          <a [routerLink]="['/video', video.id]"> 
+            {{video.snippet.title}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="button-with-border" *ngIf="videos">
+    <a *ngIf="videos.prevPageToken" (click)= "getVideos(videos.prevPageToken);">
+      Precedenta
+    </a>
+    <a *ngIf="videos.nextPageToken" (click)="getVideos(videos.nextPageToken);">
+      Urmatoarea
+    </a>
+  </div>
+  <router-outlet></router-outlet>
+  <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+</div>
+

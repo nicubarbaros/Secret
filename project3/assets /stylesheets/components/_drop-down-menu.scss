@@ -1,0 +1,128 @@
+
+
+.is-open {
+  .circle {
+    background: $border-color;
+  }
+
+  // .dropdown-content {
+  //   animation-name: KEYFRAME-NAME;
+  //   animation-duration: 0.5s; 
+  // }
+
+  // @-webkit-keyframes KEYFRAME-NAME {
+  //   0%   { opacity: 0; }
+  //   100% { opacity: 1; }
+  // }
+  // @-moz-keyframes KEYFRAME-NAME {
+  //   0%   { opacity: 0; }
+  //   100% { opacity: 1; }
+  // }
+  // @-o-keyframes KEYFRAME-NAME {
+  //   0%   { opacity: 0; }
+  //   100% { opacity: 1; }
+  // }
+  // @keyframes KEYFRAME-NAME {
+  //   0%   { opacity: 0; }
+  //   100% { opacity: 1; }
+  // }
+  .option-box, .dropdown-content, {
+    display: block;
+
+  }
+
+  .modal-wrapper {
+    visibility: visible;
+  }
+}
+
+.more-btn {
+  padding-right: 12px;
+  display: table;
+  float: right;
+
+}
+
+.circle {
+  float: right;
+  width: 28px;
+  height: 28px;
+  background: none;
+  @include border-radius(50%); 
+  position: relative;
+  cursor: pointer;
+  
+  &:hover {
+    background: $border-color;
+  }
+  
+  .more-icon, .icon-arrow {
+    display: block;
+    position: absolute;
+
+  }
+
+  .more-icon {
+    width: 3px;
+    height: 15px;
+    background: asset-url("icons/more-btn.svg") no-repeat;
+    z-index: 20;
+    left: 50%;
+    top: 50%;
+    margin-top: -7.5px;
+    margin-left: -1.5px;
+  }
+
+  .icon-arrow {
+    width: 12px;
+    height: 12px;
+    background: asset-url("icons/open-btn-2.svg") no-repeat;
+    z-index: 20;
+    left: 50%;
+    top: 50%;
+    margin-top: -6px;
+    margin-left: -6px;
+  }
+}
+
+.option-box {
+  right: 24px;
+}
+
+.dropdown-content {
+  right: 12px;
+}
+
+.option-box, .dropdown-content {
+  position: absolute;
+  z-index: 30;
+  display: none;
+  @include box-shadow(0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23));
+  @include transform(translateY(32px));
+
+    
+  .element {
+    background: $white-color;
+
+
+    &:hover {
+      background: $hover-color;
+    }
+    
+    a {
+      display: block;
+      text-transform: capitalize;
+      font-size: 12px;
+      line-height: 1;
+      font-family: "Roboto", sans-serif;
+      font-weight: 300;
+      padding: 15px;
+     }
+    .edit {
+      color: $section-title-color;
+    }
+    .delete {
+       color: $red-color;
+    }
+  }
+}

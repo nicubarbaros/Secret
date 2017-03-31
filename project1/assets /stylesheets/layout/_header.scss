@@ -1,0 +1,250 @@
+.header-wrapper {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 rem($mobile-border-padding);
+}
+
+.header {
+  @include transition(all 0.25s);
+  position: fixed;
+  width: 100%;
+  z-index: 2000;
+  background: white;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  &.sticky {
+    background: white;
+    @include transition(all 0.25s);
+    top: 0;
+  }
+}
+
+.header.sticky {
+  .header-navigation,
+  .right-bar-wrapper {
+    @include set--color($text-color);
+  }
+}
+
+.header,
+.header.sticky {
+  .right-bar-wrapper {
+    .switch-lang {
+      border-left: 1px solid #343434;
+    }
+  }
+
+  .header-navigation,
+  .switch-lang {
+    span, a {
+      @include font--source(rem(12), false, 500, initial);
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        color: $brand-color;
+      }
+
+      &.active {
+        color: $brand-color;
+      }
+    }
+
+     li {
+
+      @include mq('tablet-wide', 'max'){
+        >ul {
+
+          @include margin--mixin($bottom: rem(20));
+        }
+      }
+      > ul {
+        display: none;
+      }
+
+      li a {
+        white-space: nowrap;
+        @include font--source(rem(14), $text-white-color, 500);
+
+        @include mq('tablet-wide', 'max'){
+          color: $text-color;
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
+
+.home-page {
+  header {
+    background: transparent;
+  }
+  @include mq('tablet-wide', 'min'){
+    .header-navigation,
+    .right-bar-wrapper {
+      @include set--color();
+    }
+  }
+  .right-bar-wrapper {
+    .switch-lang {
+      border-left: 1px solid #fff;
+    }
+  }
+}
+
+.header.open {
+  .header-navigation {
+    transform: translateX(100%);
+    height: 100%; 
+    background: white;
+  }
+}
+
+.header-navigation-desktop,
+.right-bar-wrapper {
+  display: none;
+}
+
+.header-navigation {
+  @include transition(all 0.45s ease-in-out);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  top: 0;
+  left: 0;
+  @include flexbox;
+  @include justify-content(center);
+  @include align-items(flex-end);
+  @include flex-wrap(wrap);
+  text-align: center;
+  padding-bottom: rem(20);
+  left: -100%;
+
+  a,
+  span {
+    @include padding--mixin (rem(20));
+    display: block;
+    color: black;
+  }
+
+  li {
+    display: block;
+  }
+}
+
+.list-socials,
+.switch-lang {
+  li {
+    display: inline-block;
+    margin-left: rem(20);
+
+    &:first-child {
+      margin-left: 0px;
+    }
+  }
+}
+
+
+.header-wrapper {
+  @include flexbox;
+
+  @include mq('tablet-wide', 'min') {
+    @include justify-content(space-between);
+    @include align-items(center);
+    padding: 0 rem($desktop-border-padding);
+  }
+}
+
+.header-navigation-wrapper {
+  display: block;
+}
+
+.header-navigation-wrapper {
+  @include mq('tablet-wide', 'min') {
+    display: none;
+  }
+}
+
+.header-navigation-desktop {
+  @include mq('tablet-wide', 'min') {
+    display: block;
+  }
+}
+
+.header-navigation,
+.right-bar-wrapper {
+  @include set--color($text-color);
+}
+
+// .header-navigation {
+//   @include mq('tablet-wide', 'max'){
+//     background: white;
+//   }
+// }
+.header-navigation{
+  @include mq('tablet-wide', 'min') {
+    position: relative;
+
+    transform: translateY(0) !important;
+    background: none;
+    align-items: center;
+    left: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    li {
+      display: inline-block;
+      ul {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: rem(75);
+        margin: 0 -1000em;
+        z-index: 101;
+        background: rgba($brand-color, 0.5);
+        @include padding--mixin ($top: rem(6), $bottom: rem(6));
+      }
+    }
+  }
+
+  @include mq('tablet-wide', 'max') {
+    .list-socials {
+      position: relative;
+      width: 100%;
+      bottom: 30px;
+    }
+
+    .switch-lang {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      @include margin--mixin($top: rem(24), $left: rem(24));
+
+      li {
+        @include margin--mixin();
+      }
+    }
+  }
+}
+
+
+.right-bar-wrapper {
+
+  @include mq('tablet-wide', 'min') {
+
+    @include inline-flex;
+    //display: inline-flex !important;
+
+    .switch-lang {
+      @include padding--mixin ($left: rem(30));
+      @include margin--mixin ($left: rem(30));
+     
+    }
+  }
+}
+

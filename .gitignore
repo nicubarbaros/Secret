@@ -1,0 +1,36 @@
+.DS_Store
+*.pyc
+*.pyo
+env
+env*
+dist
+build
+*.egg
+*.egg-info
+_mailinglist
+.tox
+.cache/
+.idea/
+
+# npm files
+*.log
+
+# conf file
+
+
+# angular2 files
+project2/typings
+project2/app/**/*.js
+project2/app/**/*.map
+project2/dist
+project2/node_modules
+project2/jspm_packages
+project2/bower_components
+project2/npm-debug.log
+
+
+#compass files
+project2/app/.sass-cache/
+
+# log files
+logs/

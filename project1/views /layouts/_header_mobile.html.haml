@@ -1,0 +1,7 @@
+.header-navigation
+  = render :partial => 'layouts/language'
+  = render :partial => 'layouts/header_list'
+  = render :partial => 'layouts/socials_list', locals: {facebook:  facebook_url, instagram: instagram_url, twitter: twitter_url}
+.header-mobile-toggle.js-mobile-toggle
+  %span.header-mobile-lines
+

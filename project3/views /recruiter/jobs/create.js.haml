@@ -1,0 +1,9 @@
+var createJob =  "#{escape_javascript(render :partial => 'listitem', locals: {:j => @job})}"
+$('.section-content').show()
+$('.list-section-body').prepend(createJob)
+notification("#{flash[:notice]}")
+
+
+removeInside($('.modal-id'));
+$('.section-modal').hide();
+$('.jobs-count span').text("#{current_recruiter.job_lists.count}")

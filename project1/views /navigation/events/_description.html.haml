@@ -1,0 +1,7 @@
+- unless localize_attr(@event, 'description').blank?
+  %section.section--large
+    .content--wrapper.description--wrapper
+      %h2.section--header.text--grey.item--center.bottom--line
+        = t('navigation.event.titles.about')
+      .description--container.text--grey
+        = raw localize_attr(@event, 'description')

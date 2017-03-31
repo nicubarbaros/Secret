@@ -1,0 +1,18 @@
+<div class="main-content">
+  <div *ngIf="cup">
+    <p>{{cup.description}}</p>
+    <p>{{cup.name}}</p>
+
+    <p>{{cup.price}}</p>
+    <div *ngFor="let spec of cup.specs">
+      <img src="{{apiHostName}}{{spec.image}}" (click)="pickSpec(spec)">
+      <p>{{spec.color}}</p>
+      <p>{{spec.size}}</p>
+    </div>
+    <div *ngIf="selectedSpec">
+      <input #quantity type="number" name="quantity" value=1 min="1" step="1" placeholder="Quantity"><br>
+      <button (click)="addToCart(cup.type, selectedSpec.id, quantity.value, '')">Add To Cart</button>
+      <a [routerLink]="['/basket']">Proceed ot checkout</a>
+    </div>
+  </div>
+</div>

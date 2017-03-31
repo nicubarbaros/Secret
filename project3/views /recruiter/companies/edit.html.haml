@@ -1,0 +1,42 @@
+- content_for :title, t("#{@rec_company.name}")
+
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .edit-entity-wrapper
+        .col-grid.col-4
+          .edit-entity-form
+            = simple_form_for @rec_company, :url => recruiter_company_path(@rec_company.id), :method => 'put' do |f|
+              .credential-form 
+                .text-input-wrapper
+                  = f.input :name, autofocus: true, label: t('.name')
+                .text-input-wrapper
+                  .tips
+                    .tips-icon
+                      .tips-info
+                        %p
+                          = t('recruiter.companies.tips.small')
+                        %p
+                          = t('recruiter.companies.tips.big')
+                        %p
+                          = t('recruiter.companies.tips.medium')
+                        %p
+                          = t('recruiter.companies.tips.large')
+                  = f.input :size, collection: [[t('alg.dynamics.small'), 'Small'], [t('alg.dynamics.medium'), 'Medium'], 
+                    [t('alg.dynamics.big'), 'Big'], [t('alg.dynamics.large'), 'Large']], :include_blank => false, label: t('.size')
+                .text-input-wrapper
+                  .tips
+                    .tips-icon
+                      .tips-info
+                        %p
+                          = t('recruiter.companies.tips.results')
+                        %p
+                          = t('recruiter.companies.tips.innovation')
+                        %p
+                          = t('recruiter.companies.tips.process')
+                        %p
+                          = t('recruiter.companies.tips.people')
+                  = f.input :values, collection: [[t('alg.typology.results'), 'Results'], [t('alg.typology.innovation'), 'Innovation'], 
+                    [t('alg.typology.process'), 'Process'], [t('alg.typology.people'), 'People']], :include_blank => false, label: t('.values')
+                .submit-button
+                  = f.submit t('buttons.update') 

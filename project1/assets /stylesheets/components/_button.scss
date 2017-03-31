@@ -1,0 +1,116 @@
+.btn--fix-width {
+	width: $min-btn-width;
+
+	@include mq('tablet-wide', 'min') {
+		width: $btn-width ;
+	}
+}
+
+.btn--wrap {
+	// @include inline-flex;
+	position: relative;
+	overflow: hidden;
+	@include push--auto;
+}
+
+.btn {
+	@include font--source(1em, false, 500);
+	text-decoration: none;
+	text-align: center;
+	line-height: 44px;
+	text-transform: uppercase;
+	transition: background-color .3s,color .3s,border-color .3s;
+	width: 100%;
+	display: block;
+	border: none;
+	cursor: pointer;
+
+	@include mq('tablet-wide', 'min') {
+		font-size: em(18,14);
+		line-height: 66px;
+	}
+}
+
+.btn--primary {
+	background: transparent;
+	border: $btn-border-width solid $btn-border-primary;
+	color: $brand-color;
+
+	&:hover {
+		background: $btn-primary;
+		color: $text-white-color;
+	}
+}
+
+.btn--secondary{
+	background: transparent;
+	color: $text-color;
+	border: $btn-border-width solid $btn-border-secondary;
+
+	&:hover {
+		background: $btn-secondary;
+		color: $text-white-color;
+		
+	}
+}
+
+.btn--text {
+	@include flexbox;
+	@include justify-content(center);
+
+	&.primary {
+		a {
+			color: $text-color;
+
+			&:after {
+				border-bottom: 1px solid $text-color;
+			}
+		}
+	}
+
+	&.secondary {
+		a {
+			color: $text-white-color;
+
+			&:after {
+				border-bottom: 1px solid $text-white-color;
+			}
+		}
+	}
+
+	a {
+	 	@include font--source(em(10, 14), $text-white-color, 400, 1);
+		text-decoration: none;
+	 	text-transform: uppercase;
+
+	 	 &:after {
+		 	@include content;
+		 	display: block;
+		 	width: 100%;
+		 	margin-top: rem(5);
+	 	}
+
+	 	&:hover {
+	 		color: $brand-color;
+
+	 		&:after {
+	 			border-color: $brand-color;
+	 		}
+	 	}
+	 	
+	 	@include mq('tablet-wide', 'min') {
+	 		font-size: em(12,14);
+	 	}
+	}
+}
+
+
+.modal {
+	.btn {
+		margin-top: rem(35);
+
+		@include mq('tablet-wide', 'min') {
+			margin-top: rem(70);
+		}
+	}
+}

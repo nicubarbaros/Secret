@@ -1,0 +1,22 @@
+- content_for :title, t('.page_title')
+- content_for :current_location, 'box_shadow_class'
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .section-content{:style => @jobs.empty? ? 'display: none;' : ''}
+        .section-header
+          .col-grid.col-10
+            %h3
+              = t('.latest_jobs')
+        .list-section-body
+          - @jobs[0..5].each do |j|
+            = render :partial => 'recruiter/jobs/listitem', :locals => {:j => j}
+
+      .section-content{:style => @companies.empty? ? 'display: none;' : ''}
+        .section-header
+          .col-grid.col-10
+            %h3
+              = t('.latest_companies')
+        .list-section-body
+          - @companies[0..5].each do |c|
+            = render :partial => 'recruiter/companies/listitem', :locals => {:c => c}

@@ -1,0 +1,141 @@
+- if @recruitment.applications_open?
+  - title = localize_attr(@recruitment, 'header_title_open')
+  - brief = localize_attr(@recruitment, 'header_brief_open')
+- else
+  - title = localize_attr(@recruitment, 'header_title_closed')
+  - brief = localize_attr(@recruitment, 'header_brief_closed')
+
+= set_meta_tags(title, *get_localized_meta_for_obj(@meta_info))
+
+= render partial: 'layouts/modal', locals: {m_id: 'open--modal'}
+
+.content--below-header.recruitment--wrapper
+  %section.cover.page--cover
+    .cover--image{:style => "background-image: url('#{@recruitment.image}');"}
+    .cover--info
+      .content--wrapper.content--padding
+        %h2.section--header.text--white.item--center.bottom--line
+          = t('.titles.header');
+        .header--title.text--white
+          = title
+        .small--content-wrapper
+          .section--description.description--container
+            %p.text--white
+              = brief
+        %span.arrow--down
+  %section.section--large
+    .content--wrapper.description--wrapper
+      %h2.section--header.text--grey.item--center.bottom--line
+        - if @recruitment.applications_open?
+          = t('.titles.status')
+        - else 
+          = t('.titles.closed')
+      .description--container.text--grey
+        %p
+          = localize_attr(@recruitment, 'description')
+
+
+  - if @app_form
+    %section.section--large.bg--grey
+      %h2.section--header.item--center.bottom--line
+        - if @recruitment.applications_open?
+          = t('.titles.status_on')
+        - else 
+          = t('.titles.status_off')
+      .small--content-wrapper
+        .timer--wrapper
+          .timer--fraction
+            .time
+              = @app_counter[:days]
+            .description--container.text--grey
+              %p
+                = t('.timer.d')
+          .timer--fraction
+            .time
+              = @app_counter[:hours]
+            .description--container.text--grey
+              %p
+                = t('.timer.h');
+          .timer--fraction
+            .time
+              = @app_counter[:minutes]
+            .description--container.text--grey
+              %p
+                = t('.timer.m')
+          .timer--fraction
+            .time
+              = @app_counter[:seconds]
+            .description--container.text--grey
+              %p
+                = t('.timer.s');
+
+
+  %section.section--action
+    .content--wrapper.flex--wrapper.content--padding
+      .action--wrapper
+        - if @recruitment.applications_open? && @app_form
+          .header--title.text--grey
+            = t('.cta.title');
+          .small--content-wrapper
+            .section--description.description--container
+              %p.text--grey 
+                = t('.cta.description');
+          .btn--wrap.btn--fix-width
+            = link_to t('.cta.btn'), render_application_form_path(@app_form.id), remote: true,  class: 'btn btn--primary', target: '_blank'
+        - else
+          .header--title.text--grey
+            = t('.email.title');
+          .small--content-wrapper
+            .section--description.description--container
+              %p.text--grey 
+                = t('.email.description');
+          .subscription--container
+            = render :partial => 'layouts/subscription_form'
+
+  - unless @advantages.blank?
+    %section.section--large.bg--grey
+      %h2.section--header.item--center.bottom--line
+        = t('.title.advantages')
+      .content--wrapper.enumerations--wrapper.enumerations--list
+        - @advantages.each do |a|
+          .enumeration--container.column--3
+            - unless a.image.blank?
+              .image
+                %object{:data => "#{a.image}", :type => "image/svg+xml"}
+            .title
+              = localize_attr(a, 'title')
+            .description--container
+              %p.paragraph
+                = localize_attr(a, 'description')
+
+  %section.over--image-wrapper
+    .image--container{:style => "background-image: url('#{@recruitment.faq_image}');"}
+    .content--wrapper.content--padding
+      .content
+        %h2.section--header.text--grey.item--center.bottom--line
+          = t('.title.faq')
+        .description--container
+          %p.text--grey
+            "
+            = t('.faq.description')
+            "
+
+        .btn--text.primary
+          = link_to t('buttons.faq'), faq_path, remote: true
+
+  - unless @steps.blank?
+    %section.section--large
+      %h2.section--header.item--center.bottom--line
+        = t('.title.steps')
+      .content--wrapper.enumerations--wrapper.enumerations--list
+        - @steps.each do |a|
+          .enumeration--container.column--2
+            - unless a.image.blank?
+              .image
+                %object{:data => "#{a.image}", :type => "image/svg+xml"}
+              .title
+                = localize_attr(a, 'title')
+            .description--container
+              %p.paragraph
+                = localize_attr(a, 'description')
+

@@ -1,0 +1,7 @@
+.attachments--wrapper
+  - unless @event.custom_attachment_file_size.nil?
+    = link_to 'Orar', "#{request.protocol}#{request.host_with_port}#{@event.custom_attachment.url}", target: '_blank', class: 'popup custom--attachment', "data-title" => "#{@event.custom_attachment_title}", "data-color" => "#{@event.event_subcategory.color}"
+
+  - unless @event.schedule_attachment_file_size.nil?
+    = link_to 'Schedule', "#{request.protocol}#{request.host_with_port}#{@event.schedule_attachment.url}", target: '_blank', class: 'popup schedule--attachment', "data-title" => "#{@event.schedule_title}", "data-color" => "#{@event.event_subcategory.color}"
+

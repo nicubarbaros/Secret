@@ -1,0 +1,20 @@
+%section.testimonials--wrapper.bg--grey
+  .inner--wrapper.right--box
+    #testimonial--image.owl-carousel.owl-theme
+      - @testimonials.each do |testimonial|
+        .visual--wrapper{style: "background-image: url('#{testimonial.author_image}');"}
+    .info--container
+      %h2.section--header.item--center.bottom--line
+        = t('navigation.home.titles.testimonials')
+      #testimonial--body.owl-carousel.owl-theme
+        - @testimonials.each_with_index do |testimonial, i|
+          .description--container{:data => {:dot => "#{i+1}"}}
+            %p.paragraph
+              "
+              = testimonial.body
+              "
+            .testimonial--author.text--grey
+              %p.paragraph
+                = testimonial.author
+              %p.paragraph
+                = testimonial.author_about

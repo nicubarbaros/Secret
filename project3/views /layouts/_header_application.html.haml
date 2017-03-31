@@ -1,0 +1,82 @@
+%header.header-wrapper{:class => current_location}
+  %nav.secondary-navigation
+    .container-flexible
+      .inner-container
+        .col-grid.col-10
+          %ul.navbar-nav#top-bar
+            %li
+              = link_to t('text.price'), root_path
+            %li
+              = link_to t('text.help'), guide_path
+          
+
+
+  .top-brand
+    .container-flexible
+      .inner-container
+        .col-grid.col-10
+          %h1
+            Gaus
+            |
+            %span
+              = page_title
+
+          .user-menu
+            .user-name
+              - if recruiter_signed_in?
+                .user-initials-circle
+                  = current_recruiter.first_name[0, 1]
+                %span
+                  = link_to current_recruiter.first_name + " " +current_recruiter.last_name,  edit_recruiter_registration_path
+              - else
+                .user-initials-circle
+                  = current_company.company_spec.name[0, 1]
+                %span
+                  = link_to current_company.company_spec.name, edit_company_registration_path
+            .user-dropdown
+              %a.circle
+                .icon-arrow{:href => "#0"}
+              .dropdown-content
+                - if recruiter_signed_in?
+                  .element.bottom-border
+                    = link_to t('navigation.edit_profile'), edit_recruiter_registration_path, :class => 'edit'
+                  .element
+                    = link_to t('sessions.logout'), destroy_recruiter_session_path, :method => 'delete', :class => 'delete'
+
+                - else 
+                  .element.bottom-border
+                    = link_to t('navigation.edit_profile'), edit_company_registration_path, :class => 'edit'
+                  .element
+                    = link_to t('sessions.logout'), destroy_company_session_path, :method => 'delete', :class => 'delete'
+
+
+  %nav.main-nav
+    .container-flexible
+      .inner-container
+        %ul.navbar-nav#bottom-bar
+          - if recruiter_signed_in?
+            %li.to-board
+              = link_to t('navigation.dashboard'), recruiter_dashboard_index_path
+            %li.jobs-count
+              = link_to recruiter_jobs_path do
+                = t('navigation.jobs') 
+                %span
+                  = current_recruiter.job_lists.size
+            %li.companies-count
+              = link_to recruiter_companies_path do
+                = t('navigation.companies')
+                %span
+                  = current_recruiter.company_specs.count
+          - else
+            %li.to-board
+              = link_to t('navigation.dashboard'), company_dashboard_index_path
+            %li.jobs-count
+              = link_to company_jobs_path do
+                = t('navigation.jobs')
+                %span
+                  = current_company.job_lists.size
+        %ul.language-menu
+          %li
+            = link_to 'ro', url_for(:locale => 'ro')
+          %li
+            = link_to 'en', url_for(:locale => 'en')

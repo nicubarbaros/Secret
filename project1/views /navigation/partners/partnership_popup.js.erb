@@ -1,0 +1,4 @@
+var partnershipFormModal = $('#partnership--form-modal');
+partnershipFormModal.html('<%=j render partial: "navigation/partners/partnership_popup", locals: {partner_content: @partner_content} %>');
+
+$('.section--modal').show();

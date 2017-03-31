@@ -1,0 +1,8 @@
+.more-btn
+  %a.circle
+    .more-icon{:href => "#0"}
+  .option-box
+    .element.bottom-border
+      = link_to t('buttons.edit'), edit, :class => 'edit'
+    .element
+      = link_to t('buttons.delete'), delete, :method => 'delete', :class => 'delete', remote: true

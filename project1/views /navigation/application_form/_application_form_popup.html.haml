@@ -1,0 +1,37 @@
+%h2.section--header.item--center.bottom--line
+  = localize_attr(app_form, 'title')
+ 
+= form_for :user_application_form, url:  submit_application_form_path, remote: true do |f|
+  - app_form.questions.each_with_index do |q, i|
+    = f.label q.body
+    - if q.variety == 'text_field'
+      .form--section-content
+        = f.text_field "answer_#{i}[body]".to_sym
+        = f.hidden_field "answer_#{i}[question_id]".to_sym, value: q.id
+    - elsif q.variety == 'text_area'
+      .form--section-content
+        = f.text_area "answer_#{i}[body]".to_sym
+        = f.hidden_field "answer_#{i}[question_id]".to_sym, value: q.id
+    - elsif q.variety == 'collection_radio_buttons'
+      - coll = q.builder_text.split(',')
+      .form--section-content
+        = f.collection_radio_buttons "answer_#{i}[body]".to_sym, coll, :to_s, :to_s do |b| 
+          .radio--element
+            = b.radio_button + b.label
+        = f.hidden_field "answer_#{i}[question_id]".to_sym, value: q.id
+    - elsif q.variety == 'collection_select'
+      - coll = q.builder_text.split(',')
+      .form--section-content.custom-selectbox
+        = f.collection_select "answer_#{i}[body]".to_sym, coll, :to_s, :to_s
+        = f.hidden_field "answer_#{i}[question_id]".to_sym, value: q.id
+    - elsif q.variety == 'collection_check_boxes'
+      - coll = q.builder_text.split(',')
+      .form--section-content
+        = f.collection_check_boxes "answer_#{i}[body]".to_sym, coll, :to_s, :to_s,  include_hidden: false do |b|
+          .check--boxes-element
+            = b.check_box + b.label
+        = f.hidden_field "answer_#{i}[question_id]".to_sym, value: q.id
+  .btn--wrap.btn--fix-width
+    = f.submit t('buttons.submit'), class: 'btn btn--primary'
+
+

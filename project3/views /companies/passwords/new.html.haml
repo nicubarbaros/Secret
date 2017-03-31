@@ -1,0 +1,17 @@
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .passwords-wrapper
+        .col-grid.col-4
+          .passwords-form
+            = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+              %h2.statement-header
+                = t('company.sessions.index.pass_forgot') 
+              .credential-form
+                = f.error_notification
+                .text-input-wrapper
+                  = f.input :email, required: true, autofocus: true, label: t('company.sessions.index.email')
+                .extra-links
+                  = render "company/shared/links"
+                .submit-button
+                  = f.button :submit,  t('buttons.send')

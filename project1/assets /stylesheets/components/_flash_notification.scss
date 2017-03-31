@@ -1,0 +1,12 @@
+.flash--notification{
+  display: none;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $brand-color;
+  width: 100%;
+  z-index: 99999;
+  @include padding--mixin(rem(10));
+  position: fixed;
+  text-align: center;
+}

@@ -1,0 +1,114 @@
+.list-item {
+  background: $white-color;
+  padding: 16px 0;
+  display: block;
+  
+  a, span{
+    font-size: 12px;
+    font-family: $roboto;
+    font-weight: 300;
+    line-height: 27px;
+    color: $header-background;
+  }
+
+  .title {
+    padding-left: 24px;
+
+    a, span {
+      font-weight: normal;
+      font-size: 14px;
+    }
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: $hover-color;
+
+    .title a, .important{
+      color: $brand-color;
+    }
+  }
+  @include clearfix;
+}
+
+.bottom-border {
+  border-bottom: 1px solid $border-color;
+}
+
+.list-section-body {
+  @include box-shadow(0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24));
+}
+
+.list-section-header {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+  .list-item {
+    background: $hover-color;
+
+    span {
+      color: $section-title-color;
+    }
+  }
+}
+
+.section-header {
+  padding: 0 24px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+
+  h3 {
+    font-family: $roboto;
+    font-size: 14px;
+    font-weight: 300;
+    color: $section-title-color;
+    line-height: 16px;
+  }
+  @include clearfix;
+}
+
+.section-add-item {
+  @include box-shadow(0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28));
+}
+
+.section-add-item {
+  background: $white-color;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  .add-item-wrapper {
+    @include clearfix;
+
+    .add-item-button {
+      padding: 12px 0;
+    }
+  }
+
+  span {
+    font-size: 14px;
+    font-family: $roboto;
+    line-height: 16px;
+    font-weight: normal;
+    color: #9E9E9E;
+    display: block;
+    padding: 22px 0;
+    
+  }
+}
+
+.candidate-status {
+  padding-left: 24px;
+}
+
+
+#tabs {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}

@@ -1,0 +1,15 @@
+- unless partners.blank?
+  %section.section--large
+    %h2.section--header.item--center.bottom--line
+      = header
+    .content--wrapper
+      %ul.partners--wrapper
+        - partners.each do |partner|
+          %li
+            - if partner.has_personal_page?
+              .partner{:style => "background-image: url('#{partner.logo}');"}
+              .btn--text.primary
+                = link_to t('buttons.partners'), partner_path(partner)
+                
+            - else
+              .partner{:style => "background-image: url('#{partner.logo}');"}

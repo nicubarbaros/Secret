@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "recruiter, gaus, hr, recruitment, job", :name => "keywords"}
+    %meta{:content => "Gaus for recruiter and companies", :name => "description"}
+    %meta{:content => "Gaus, 1/4/2016", :name => "revised"}
+    %meta{:content => "Vertigo", :name => "author"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %title Gaus
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body.scroll
+
+
+    = render :partial => 'layouts/header_application'
+    / = render :partial => 'layouts/modal', :locals => {:m_id => 'help'}
+    / = link_to_unless_current 'ro', url_for(:locale => 'ro')
+    / = link_to_unless_current 'en', url_for(:locale => 'en')
+    
+    .notification-container
+      - if flash[:notice]
+        .notify-x
+          %span
+            x
+        .notification
+          = flash[:notice]
+        
+    = yield

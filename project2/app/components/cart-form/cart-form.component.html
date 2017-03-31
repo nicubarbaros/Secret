@@ -1,0 +1,19 @@
+<form [formGroup]="cartForm">
+
+  <label for="name">Name</label>
+  <input formControlName="name" id="name" />
+  <control-messages [control]="cartForm.controls.name"></control-messages>
+
+  <label for="surname">Surname</label>
+  <input formControlName="surname" id="surname"/>
+	<control-messages [control]="cartForm.controls.surname"></control-messages>
+
+  <label for="phone">phone</label>
+  <input formControlName="phone" id="phone" />
+  <control-messages [control]="cartForm.controls.phone"></control-messages>
+
+  <label for="email">Email</label>
+  <input formControlName="email" id="email" />
+  <control-messages [control]="cartForm.controls.email"></control-messages> 
+
+</form>

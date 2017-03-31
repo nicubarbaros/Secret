@@ -1,0 +1,49 @@
+- content_for :title, @candidate.firstname << " " << @candidate.lastname
+
+= render :partial => 'layouts/modal', :locals => {:m_id => 'update-candidate'}
+
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .candidate-container 
+        .edit-item-wrapper
+          .submit-button.edit-button
+            = link_to t('recruiter.candidates.edit.edit_candidate'), edit_recruiter_job_candidate_path,  :class => "edit-item", :remote => true
+        .category-tabs
+          %nav
+            %ul.tabs-navigation
+              %li
+                - @categories.each_with_index do |c, i|
+                  %a{"data-content" => "tabs-#{i}", :href => "#0"} 
+                    = locale == 'en' ? c.name : c.name_rom
+          %ul.tabs-content
+            - @categories.each_with_index do |c, i|
+              %li{"data-content" => "tabs-#{i}"}
+                - c.subcategories.each do |s|
+                  .subcategory-wrapper
+                    .subcategory-header
+                      .col-grid.column-5
+                        %h3
+                          = locale == 'en' ? s.name : s.name_rom
+                      .col-grid.column-1
+                        .toggle
+                          .action-icon
+                    .subcategory-body
+                      .subcategory-description-wrapper
+                        .col-grid.column-1
+                          .description-icon
+                            = image_tag "icons/tips.svg"
+                        .col-grid.column-5
+                          .description-text
+                            = locale == 'en' ? s.description : s.description_rom
+                      .subcategory-questions-wrapper
+                        - s.questions.each do |q|
+                          .question-block                          
+                            - answer = Answer.where(:candidate_id => @candidate.id, :question_id => q.id).first()
+                            .s-question
+                              .col-grid.column-5
+                                = locale == 'en' ? q.body : q.body_rom
+                              .col-grid.column-1
+                                - if answer
+                                  = answer.value
+

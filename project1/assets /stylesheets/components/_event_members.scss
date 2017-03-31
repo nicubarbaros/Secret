@@ -1,0 +1,97 @@
+.organizers--section {
+
+  .organizer--wrapper {
+    padding: 0 rem($gutter/2);
+    width: 50%;
+    padding-bottom: rem($gutter);
+
+  }
+
+  .member--photo {
+    width: 100%;
+    height: 132px;
+    display: block;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    position: relative;
+    z-index: 0;
+  }
+
+  .member--description {
+    background-color: $secondary-color;
+    padding: rem(15);
+    text-align: center;
+
+    .position {
+      @include font--source(em(8, 14), false, 300, initial);
+      margin-bottom: rem(5);
+      text-transform: uppercase;
+    }
+
+    .name {
+      @include font--source(em(12, 14), false, 400, initial);
+    }
+  }
+
+  .item--panel-cover {
+    top: 0;
+    opacity: 0.3;
+  }
+
+  .member--contacts {
+    position: absolute;
+    @include inline-flex;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    @include margin--mixin($right: rem(15), $bottom: rem(15));
+    
+    a {
+      margin-left: rem(30);
+      @include transition(all 0.15s);
+
+      &:hover {
+        transform: scale(1.2);
+      }
+
+      &:first-of-type {
+        margin-left: 0;
+      } 
+    }
+  }
+}
+
+@include mq('phone-wide', 'min') {
+  .organizers--section {
+    .member--photo {
+      height: 250px;
+    }
+  }
+}
+@include mq('tablet-wide', 'min') {
+  .organizers--section {
+
+    .organizer--wrapper {
+      width: 33.33333333333333%;
+    }
+
+    .member--photo {
+      height: 372px;
+    }
+
+    .member--description {
+      padding: rem(30);
+      text-align: left;
+      .position {
+        font-size: em(16,14);
+        margin-bottom: rem(10);
+      }
+
+      .name {
+        font-size: em(24,14);
+      }
+    }
+  }
+}

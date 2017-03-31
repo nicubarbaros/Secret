@@ -1,0 +1,39 @@
+- content_for :current_location, 'box_shadow_class'
+- content_for :title, t('.edit')
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .edit-entity-wrapper
+        .col-grid.col-4
+          .edit-entity-form
+            = form_tag recruiter_update_path(resource) do
+              .credential-form
+                .text-input-wrapper
+                  = label_tag t('.first_name')
+                  = text_field_tag :first_name, resource.first_name
+                .text-input-wrapper
+                  = label_tag t('.last_name')
+                  = text_field_tag :last_name, resource.last_name
+                .text-input-wrapper
+                  = label_tag 'Email'
+                  = text_field_tag :email, resource.email
+                .submit-button
+                  = submit_tag t('buttons.update')
+
+
+            = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+              .credential-form
+                = f.error_notification
+                .text-input-wrapper
+                  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                    %p
+                      Currently waiting confirmation for: #{resource.unconfirmed_email}
+                .text-input-wrapper
+                  = f.input :password, autocomplete: "off", placeholder: t('.password_hint'), required: false,label: t('.password')
+                .text-input-wrapper
+                  = f.input :password_confirmation, required: false, label: t('.repeat_password')
+                .text-input-wrapper
+                  = f.input :current_password, placeholder: t('.current_password_hint'), required: true, label: t('.current_password')
+                .submit-button
+                  = f.button :submit, t('buttons.update')
+            

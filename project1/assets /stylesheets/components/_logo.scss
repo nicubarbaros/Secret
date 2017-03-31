@@ -1,0 +1,35 @@
+.home-page svg {
+	fill: white;
+}
+
+ .header.sticky svg {
+  fill: $brand-color;
+}
+
+.header-logo{
+	float: left;
+	position: relative;
+	height: 30px;
+	@include transition(all 0.15s);
+  fill: $brand-color;
+
+  @include margin--mixin ($top: 12.5px, $bottom: 12.5px);
+
+	svg {
+		height: 30px;
+		width: auto;
+		display: block;
+	}
+
+  @include mq('tablet-wide', 'min'){
+    height: 60px;
+    
+    @include margin--mixin ($top: rem(20), $bottom: rem(20));
+
+    svg {
+      height: 60px;
+    }
+  }
+}
+
+

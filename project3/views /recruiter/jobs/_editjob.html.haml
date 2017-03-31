@@ -1,0 +1,26 @@
+- content_for :title, t("#{@job.name}")
+
+= simple_form_for @job, :url => recruiter_job_path(@job.id), :method => 'put' do |f|
+  .credential-form
+    .text-input-wrapper
+      = f.input :name, autofocus: true, label: t('.name')
+    .text-input-wrapper
+      = f.input :description, label: t('.description'), :required => false
+    .text-input-wrapper
+      .tips
+        .tips-icon
+          .tips-info
+            %p
+              = t('recruiter.jobs.tips.execution')
+            %p
+              = t('recruiter.jobs.tips.management')
+            %p
+              = t('recruiter.jobs.tips.client')
+            %p
+              = t('recruiter.jobs.tips.development')
+      = f.input :focus, collection: [[t('alg.focus.execution'), 'Execution'], [t('alg.focus.management'), 'Management'], 
+        [t('alg.focus.client'), 'Client'], [t('alg.focus.development'), 'Development']], :include_blank => false, label: t('.focus')
+    .text-input-wrapper
+      = f.input :company_spec_id, collection: CompanySpec.where(:owner_id => current_recruiter.id, :owner_type => current_recruiter.class.to_s), :required => false, label: t('recruiter.jobs.new.company'),input_html: {:id => 'company_specs'}
+    .submit-button
+      = f.submit t('buttons.update')

@@ -1,0 +1,3 @@
+$(".list-item#itemid-#{@job.id}").slideUp();
+notification("#{flash[:notice]}")
+$('.jobs-count span').text("#{current_company.job_lists.count}")

@@ -1,0 +1,19 @@
+.button-with-border {
+  cursor: pointer;
+  @include margin--mixin ($top: rem(25));
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+
+  a {
+    border: 1px solid #D6D5D4;
+    @include padding--mixin($top: rem(9), $right: rem(70), $bottom: rem(9), $left: rem(70));
+    @include font--source(em(14,16), black, 400, em(16,14) );
+    text-align: center;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: #D6D5D4;
+    }
+  }
+}

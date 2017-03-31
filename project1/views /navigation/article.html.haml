@@ -1,0 +1,85 @@
+= set_meta_tags(@article.title, @article.brief, @article.image.url(:medium))
+- fb_href = facebook_share(@fb_share_data)
+- twitter_href = twitter_share(@twitter_share_data)
+
+
+.content--below-header.blog--wrapper
+  %section.cover.page--cover
+    .cover--image{:style => "background-image: url('#{@article.image}');"}
+    .cover--info
+      .content--wrapper.content--padding
+        %h2.section--header.text--white.item--center.bottom--line
+          = localize_attr(@article.article_category, 'name')
+        .header--title
+          = @article.title
+        .date.text--white
+          = l(@article.created_at, format: '%B %d, %Y')
+        .small--content-wrapper
+          .section--description.description--container
+            %p.text--white
+              = @article.brief
+        %span.arrow--down
+  %section.bg--grey
+    .small--content-wrapper
+      .author--wrapper
+        .author--image
+          %span{:style => "background-image: url('#{@article.author_image}');"}
+        .author--info
+          %h2
+            = @article.author
+          .description--container
+            %p
+              = @article.author_bio
+  %section.section--large.article--body-wrapper
+    .small--content-wrapper.description--container
+      = raw @article.body
+
+    .shareable--wrapper
+      %h2.section--header
+        = t('.titles.share')
+      %ul.list-socials
+        %li.facebook-icon
+          = link_to 'Facebook', fb_href, class: 'facebook-icon', target: '_blank'
+        %li.twitter-icon
+          = link_to 'Twitter', twitter_href, class: 'twitter-icon', target: '_blank'
+
+  
+  %section.disqus--wrapper
+    .small--content-wrapper
+      #disqus_thread
+
+  - unless @related_articles.nil?
+    %section.section--large
+      .small--content-wrapper.archive--list
+        %h2.section--header.item--center.bottom--line
+          = t('.titles.related')
+        - @related_articles.each do |article|
+          %article
+            .article--image
+              %span{:style => "background-image: url('#{article.image}');"}
+            .article--info
+              = link_to article.title, article_path(article.slug)
+              .date
+                = l(article.created_at, format: '%B %d, %Y')
+              .description--container
+                %p 
+                  = article.brief
+
+
+
+// TODO: move this *.js to separate file
+:javascript
+  var disqus_config = function () {
+    this.page.url = "#{request.original_url}";
+    this.page.identifier = "#{@article.id}";
+  };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//dnb-sandbox.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+%noscript
+  %a{:href => "https://disqus.com/?ref_noscript"}
+
+

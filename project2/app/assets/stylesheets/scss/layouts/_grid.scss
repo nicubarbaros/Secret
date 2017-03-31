@@ -1,0 +1,41 @@
+.main-content,
+.video-container {
+  max-width: 1140px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @include cf;
+  @include push--auto;
+
+  .grid-module {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  .item-column-4 {
+    width: 33.33333333%;
+    @include mq('tablet', 'max') {
+      width: 50%;
+    }
+
+    @include mq('phone-wide', 'max') {
+      width: 100%;
+    }
+  }
+
+  .item-column-6 {
+    width: 50%;
+    @include mq('phone-wide', 'max') {
+      width: 100%;
+    }
+  }
+
+
+  .item-column-4,
+  .item-column-6 {
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: $grid-column-gutter;
+    padding-left: $grid-column-gutter;
+  }
+}

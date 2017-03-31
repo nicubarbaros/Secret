@@ -1,0 +1,15 @@
+= render partial: 'layouts/modal', locals: {m_id: 'open--modal'}
+
+.events--wrapper.content--below-header#subcategories
+  = render partial: 'navigation/events/header', locals: {event: @event}
+  
+  = render partial: 'navigation/events/description', locals: {event: @event}
+
+  = render partial: 'navigation/events/applications', locals: {event: @event}
+
+  = render partial: 'navigation/events/organizers', locals: {event: @event}
+
+  = render partial: 'navigation/events/statistics', locals: {event: @event}
+
+  = render partial: 'navigation/events/partners', locals: {event: @event}
+

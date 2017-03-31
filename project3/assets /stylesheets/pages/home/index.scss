@@ -1,0 +1,210 @@
+#body-image {
+
+    background: asset-url("gaus-landing.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+#body-image { 
+  @include clearfix;
+  position: fixed; top: 0; left: 0;
+  &:before {
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     right: 0;
+     left: 0;
+     min-width: 100%;
+     min-height: 100%;
+     background: rgba($header-background, 0.3);
+   } 
+}
+.bgwidth { width: 100vw; height: 100vh }
+.bgheight { height: 100vh; width: 100vh }
+
+
+.sign-in-wrapper, 
+.sign-up-wrapper,
+.passwords-wrapper, 
+.welcome-wrapper {
+  @include display-flex();
+  @include flex-direction();
+  align-items: center;
+  @include flex();
+  padding: 72px 0;
+  
+
+  .sign-in-form, 
+  .sign-up-form,
+  .passwords-form {
+    width: 100%;
+    margin: 0 auto;
+    background: rgba($white-color, 0.95);
+    @include inline-flex();
+    @include box-shadow(0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24));
+
+
+    .statement-header, .continue-as{
+      font-family: $roboto;
+      color: $header-background;
+      font-weight: normal;
+    }
+    
+    .statement-header {
+      font-size: 18px;
+      line-height: 21px;
+      text-align: center;
+      padding-bottom: 24px;
+    }
+    .continue-as {
+      font-size: 14px;
+      line-height: 15px;
+    }
+
+    .middle-section-wrapper {
+      padding: 20px 36px;
+      border: 1px solid $border-color;
+    }
+    .bottom-section-wrapper {
+      padding-top: 36px;
+    }
+
+    .user-credential-wrapper {
+      @include inline-flex();
+      margin-top: 20px;
+    }
+    
+    .current-initial {
+      font-family: $roboto;
+      font-weight: normal;
+      width: 42px;
+      height: 42px;
+      @include border-radius(50%);
+      font-size: 21px;
+      color: $white-color;
+      line-height: 42px;
+      text-align: center;
+      background: $header-background;
+      text-transform: uppercase;
+    } 
+
+    .user-credential-info {
+      margin-left: 20px;
+    }
+    .current-name, .current-email {
+      font-family: $roboto;
+      font-weight: 300;
+      color: $section-title-color;
+      line-height: 21px;
+    }
+
+    .current-name {
+      font-size: 14px;
+    }
+
+    .current-email {
+      font-size: 10px;
+    }
+
+    form {
+      width: 100%;
+    }
+  } 
+  
+
+  #checkbox {
+    input {
+      width: auto;
+      height: auto;
+    }
+  }
+  .extra-links {  
+    float: left;
+
+    a {
+      font-family: $roboto;
+      font-size: 14px;
+      font-weight: 300;
+      display: block;
+      color: $section-title-color;
+      line-height: 1;
+
+      &:first-child {
+        margin-bottom: 8px;
+      }
+    }
+  }
+  
+  #link-valign {
+    padding: 11px 0;
+    a {
+      margin-bottom: 0;
+    }
+  }
+
+  .sign-in-form,
+  .sign-up-form,
+  .passwords-form {
+    padding: 36px;
+  }
+  
+  .sign-in-recruiter, .sign-in-company {
+    width: 100%;
+  }
+}
+
+.welcome-wrapper {
+  text-align: center;
+  padding: 0;
+
+  p {
+    color: #ffffff;
+    font-family: $roboto;
+    display: block;
+  }
+
+  .big-text {
+    color: $header-background;
+    font-size: 36px;
+    font-weight: normal;
+    margin-bottom: 36px;
+
+  }
+  
+  .small-text {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 20px;
+    line-height: 1.5
+  }
+}
+
+#middle-line {
+  .sign-in-recruiter {
+    padding-right: 36px;
+  }
+      
+  .sign-in-company{
+    padding-left: 36px;
+  }
+
+  @include clearfix;
+  position: relative;
+
+  &:before {
+    background: $border-color;
+    width: 1px;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    display: block;
+    position: absolute;
+    right: 50%;
+  }
+}
+
+.toggle-visibility{
+  display: none;
+}

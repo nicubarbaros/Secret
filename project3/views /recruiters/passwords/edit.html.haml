@@ -1,0 +1,21 @@
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .passwords-wrapper
+        .col-grid.col-4
+          .passwords-form
+            = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+              %h2.statement-header
+                = t('recruiter.sessions.index.pass_forgot') 
+              .credential-form
+                = f.error_notification
+                = f.input :reset_password_token, as: :hidden
+                = f.full_error :reset_password_token
+                .text-input-wrapper
+                  = f.input :password, label: "New password", required: true, autofocus: true, placeholder: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+                .text-input-wrapper
+                  = f.input :password_confirmation, label: "Confirm your new password", required: true
+                .extra-links
+                  = render "recruiter/shared/links"
+                .submit-button
+                  = f.button :submit, t('buttons.change')

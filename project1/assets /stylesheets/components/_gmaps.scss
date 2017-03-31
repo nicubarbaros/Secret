@@ -1,0 +1,71 @@
+#map {
+	width: 100%;
+	height: 600px;
+}
+
+.infoBox {
+	max-width: 280px !important;
+	margin-top: 10px !important;
+
+	img {
+		margin: rem(24) !important;
+	}
+	.info--window-wrapper {
+		.content {
+			width: 100%;
+			background: white;
+			box-shadow: 0.3em 0.3em rgba($brand-color, 0.5);
+			@include padding--mixin(rem(25));
+
+			.bottom--line {
+				&:after {
+					margin-bottom: rem(50);
+				}
+			}
+		}
+
+		.contacts--box {
+			.address,
+			.phone,
+			.email,
+			.lbg--name {
+				@include font--source(em(12, 14), $text-color, 400, initial);
+			}
+
+			.phone {
+				@include margin--mixin($top: rem(20), $bottom: rem(10));
+			}
+
+			.phone,
+			.email,
+			.lbg--name {
+				font-weight: 500;
+			}
+
+			.email,
+			.lbg--name {
+				@include margin--mixin($bottom: rem(20));
+			}
+		}
+
+		@include mq("phone-wide", min) {
+
+			.content {
+				@include padding--mixin(rem(50));
+			}
+
+			.contacts--box {
+				.address,
+				.phone,
+				.email,
+				.lbg--name {
+					font-size: em(18, 14);
+				}
+			}
+		}
+	}
+
+	@include mq("phone-wide", min) {
+		max-width: 400px !important;
+	}
+}

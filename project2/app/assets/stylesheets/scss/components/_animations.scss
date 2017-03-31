@@ -1,0 +1,23 @@
+
+.slide-in{
+  opacity: 0;
+  @include transition(all 0.7s ease-out);
+  @include transform(matrix(1, 0, 0, 1, 0, 100));
+}
+
+.slide-in.in-view {
+  opacity: 1;
+  @include transform(matrix(1, 0, 0, 1, 0, 0));
+}
+
+//  .loading {
+//     position: fixed;
+//     height: 100%;
+//     width: 100%;
+//     top: 0;
+//     left: 0;
+//     bottom: 0;
+//     right: 0;
+
+//     background: red;
+// }

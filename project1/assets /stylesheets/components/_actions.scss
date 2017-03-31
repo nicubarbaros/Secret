@@ -1,0 +1,8 @@
+.section--action {
+
+	@include padding--mixin($top: rem(120), $bottom: rem(80));
+
+	.action--wrapper {
+		text-align: center;
+	}
+}

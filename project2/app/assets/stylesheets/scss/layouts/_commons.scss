@@ -1,0 +1,27 @@
+h2 {
+  @include font--source(em(32,16), black, 400, 1.5);
+}
+
+h3 {
+  background: blue;
+}
+
+
+h1, h2, h3, h4, h5, h6, ul{
+  @include padding--mixin(); //by default this mixin returns padding: 0
+  @include margin--mixin(); // by default this mixin returns margin: 0
+}
+
+a {
+  text-decoration: none;
+}
+
+figure {
+	@include margin--mixin(); // by default this mixin returns margin: 0
+}
+
+p {
+	margin: 0;
+	padding: 0;
+
+}

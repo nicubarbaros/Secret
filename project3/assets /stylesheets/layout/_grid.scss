@@ -1,0 +1,270 @@
+$large: "(min-width: 1200px)";
+$desktop: "(min-width: 992px)";
+$tablet: "(min-width: 768px)";
+$phone: "(min-width: 320px)";
+
+.container-flexible {
+  margin-left: auto;
+  margin-right: auto;
+
+  .inner-container {
+    position: relative;
+    width: 100%;
+    padding: 0 8.3333333333%;
+    @include clearfix;
+  }
+}
+
+.container-flexible{
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+
+  .col-4 {
+    width: 100%
+  }
+  
+  @media #{$large} {
+    max-width: 1200px;
+
+    .col-1 {
+      width: 10%
+    }
+
+    .col-2 {
+      width: 20%
+    }
+    .col-3 {
+      width: 30%
+    }
+
+    .col-4 {
+      width: 40%
+    }
+
+    .col-5 {
+      width: 50%
+    }
+
+    .col-6 {
+      width: 60%
+    }
+
+    .col-7 {
+      width: 70%
+    }
+
+    .col-8 {
+      width: 80%
+    }
+
+    .col-9 {
+      width: 90%
+    }
+    .col-10 {
+      width: 100%
+    }
+
+    .column-1 {
+      width: 16.6666666667%;
+    }
+
+    .column-3{
+      width: 50%;
+    }
+    
+    .column-5 {
+      width: 83.3333333335%;
+    }
+
+    .column-6 {
+      width: 100%;
+    }
+  }
+
+  @media #{$desktop} {
+    .col-1 {
+      width: 10%
+    }
+
+    .col-2 {
+      width: 20%
+    }
+    .col-3 {
+      width: 30%
+    }
+
+    .col-4 {
+      width: 40%
+    }
+
+    .col-5 {
+      width: 50%
+    }
+
+    .col-6 {
+      width: 60%
+    }
+
+    .col-7 {
+      width: 70%
+    }
+
+    .col-8 {
+      width: 80%
+    }
+
+    .col-9 {
+      width: 90%
+    }
+    .col-10 {
+      width: 100%
+    }
+
+    .column-1 {
+      width: 16.6666666667%;
+    }
+
+    .column-3{
+      width: 50%;
+    }
+
+    .column-5 {
+      width: 83.3333333335%;
+    }
+
+    .column-6 {
+      width: 100%;
+    }
+  }
+
+  @media #{$tablet} {
+    .col-1 {
+      width: 10%
+    }
+
+    .col-2 {
+      width: 20%
+    }
+    .col-3 {
+      width: 30%
+    }
+
+    .col-4 {
+      width: 40%
+    }
+
+    .col-5 {
+      width: 50%
+    }
+
+    .col-6 {
+      width: 60%
+    }
+
+    .col-7 {
+      width: 70%
+    }
+
+    .col-8 {
+      width: 80%
+    }
+
+    .col-9 {
+      width: 90%
+    }
+    .col-10 {
+      width: 100%
+    }
+
+    .column-1 {
+      width: 16.6666666667%;
+    }
+
+    .column-3{
+      width: 50%;
+    }
+
+    .column-5 {
+      width: 83.3333333335%;
+    }
+
+    .column-6 {
+      width: 100%;
+    }
+
+  }
+}
+
+@media #{$desktop} {
+
+}
+
+.col-1 {
+  width: 10%
+}
+
+.col-2 {
+  width: 20%
+}
+.col-3 {
+  width: 30%
+}
+
+.col-4 {
+  width: 40%
+}
+
+.col-5 {
+  width: 50%
+}
+
+.col-6 {
+  width: 60%
+}
+
+.col-7 {
+  width: 70%
+}
+
+.col-8 {
+  width: 80%
+}
+
+.col-9 {
+  width: 90%
+}
+.col-10 {
+  width: 100%
+}
+
+
+.column-1 {
+  width: 16.6666666667%;
+}
+
+.column-2 {
+  width: 33.3333333334%;
+}
+.column-3{
+  width: 50%;
+}
+
+.column-4 {
+  width: 66.6666666668%;
+}
+.column-5 {
+  width: 83.3333333335%;
+}
+
+.column-6 {
+  width: 100%;
+}
+.col-grid {
+  min-height: 1px;
+  float: left;
+  position: relative;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+

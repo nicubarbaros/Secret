@@ -1,0 +1,10 @@
+= form_for @candidate, url: {:action => :update, :controller => 'company/candidates', :job_id => @job} do |f|
+  .credential-form
+    .text-input-wrapper
+      = f.label :firstname, t('company.candidates.edit.firstname')
+      = f.text_field :firstname
+    .text-input-wrapper
+      = f.label :lastname, t('company.candidates.edit.lastname')
+      = f.text_field :lastname
+    .submit-button
+      = f.submit

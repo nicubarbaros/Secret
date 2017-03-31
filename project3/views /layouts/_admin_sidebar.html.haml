@@ -1,0 +1,19 @@
+.main-sidebar
+  %section.sidebar
+    %ul.sidebar-menu
+      %li{ :class => cp(admin_dashboard_index_path) }
+        = link_to admin_dashboard_index_path do
+          %i.fa.fa-hashtag
+          %span Dashboard
+      %li{ :class => cp(admin_help_blocks_edit_path) }
+        = link_to admin_help_blocks_edit_path do
+          %i.fa.fa-exclamation
+          %span Help
+      %li{ :class => cp(admin_guide_lines_path) }
+        = link_to admin_guide_lines_path do
+          %i.fa.fa-bookmark
+          %span Guides
+      %li{ :class => cp(admin_categories_path) }
+        = link_to admin_categories_path do
+          %i.fa.fa-question
+          %span Categories

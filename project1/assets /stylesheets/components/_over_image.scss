@@ -1,0 +1,69 @@
+.over--image-wrapper {
+	position: relative;
+
+	.image--container {
+		width: 100%;
+		height: 320px;
+		background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+	}
+
+	.content {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		background: white;
+		max-width: 280px;
+		z-index: 10;
+		box-shadow: 0.3em 0.3em rgba($brand-color, 0.5);
+		@include padding--mixin(rem(25));
+
+		.bottom--line {
+			&:after {
+				margin-bottom: rem(50);
+			}
+		}
+	}
+
+	.contacts--box {
+		.address,
+		.phone,
+		.email {
+			@include font--source(em(12, 14), $text-color, 400, initial);
+		}
+
+		.phone {
+			@include margin--mixin($top: rem(20), $bottom: rem(10));
+		}
+
+		.phone,
+		.email {
+			font-weight: 500;
+		}
+
+		.email {
+			@include margin--mixin($bottom: rem(20));
+		}
+	}
+
+	@include mq("phone-wide", min) {
+
+		.image--container {
+			min-height: 600px;
+		}
+
+		.content {
+			max-width: 400px;
+			@include padding--mixin(rem(50));
+		}
+
+		.contacts--box {
+			.address,
+			.phone,
+			.email {
+				font-size: em(18, 14);
+			}
+		}
+	}
+}

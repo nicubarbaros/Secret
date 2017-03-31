@@ -1,0 +1,21 @@
+%header.header-index{:class => header_class}
+  %nav.secondary-navigation{:class => header_class}
+    .container-flexible
+      .inner-container
+        .col-grid.col-10
+          %ul.navbar-nav#top-bar
+            %li
+              = link_to t('text.price'), price_path
+            %li
+              = link_to t('text.help'), guide_path
+          -unless company_signed_in?
+            %ul.navbar-nav#action-bar
+              %li.session
+                = link_to t('company.sessions.index.sign_up'),new_company_registration_path
+              %li
+                .submit-button
+                  = link_to t('company.sessions.index.sign_in'), new_company_session_path
+  .container-flexible
+    .inner-container#navbar
+      .brand
+        = link_to( image_tag("gaus-logo.svg"), root_path,)

@@ -1,0 +1,10 @@
+%header.header
+  .header-wrapper
+    = link_to root_path, class: 'header-logo' do
+      = render :partial => 'layouts/logo'
+    .header-navigation.header-navigation-desktop
+      = render :partial => 'layouts/header_list'
+    .right-bar-wrapper
+      = render :partial => 'layouts/header_options'
+    .header-navigation-wrapper
+      = render :partial => 'layouts/header_mobile'

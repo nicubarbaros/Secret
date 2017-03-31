@@ -1,0 +1,10 @@
+<div class="main-content">
+	<div *ngIf="video">
+	  <div *ngFor="let video of video.items">
+	      <h2>{{video.snippet.channelTitle}}</h2>
+	      
+	      {{updateVideoUrl(video.id)}}
+	      <iframe width="560" height="315" [src]= "videoUrl" frameborder="0" allowfullscreen></iframe>
+	  </div>
+	</div>
+</div>

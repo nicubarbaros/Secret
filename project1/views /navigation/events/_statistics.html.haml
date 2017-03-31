@@ -1,0 +1,13 @@
+- unless @event.statistics.blank?
+  %section.section--large
+    %h2.section--header.item--center.bottom--line
+      = t('navigation.event.titles.statistics')
+
+    .content--wrapper.enumerations--wrapper.enumerations--list
+      - @event.statistics.each do |statistic|
+        .enumeration--container.column--3
+          .title{ style: "color: #{event.event_subcategory.color}"}
+            = statistic.number
+          .description--container
+            %p.paragraph
+              = localize_attr(statistic, 'title')

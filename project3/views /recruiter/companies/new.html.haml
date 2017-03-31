@@ -1,0 +1,8 @@
+- content_for :title, t('recruiter.companies.new.page_title')
+= simple_form_for :rec_company, :url => recruiter_companies_path, :method => 'post' do |f| 
+  = f.input :name, autofocus: true, label: t('.name')
+  = f.input :size, collection: [[t('alg.dynamics.small'), 'Small'], [t('alg.dynamics.medium'), 'Medium'], 
+    [t('alg.dynamics.big'), 'Big'], [t('alg.dynamics.large'), 'Large']], :include_blank => false, label: t('.size')
+  = f.input :values, collection: [[t('alg.typology.results'), 'Results'], [t('alg.typology.innovation'), 'Innovation'], 
+    [t('alg.typology.process'), 'Process'], [t('alg.typology.people'), 'People']], :include_blank => false, label: t('.values')
+  = f.submit t('buttons.create') 

@@ -1,0 +1,102 @@
+.info-pages-wrapper {
+  @include display-flex();
+  
+  .col-grid {
+    margin: 0 auto;
+  }
+
+  h1 {
+    text-align: center;
+    font-family: $roboto;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 42px;
+    color: $header-background;
+    padding: 60px 0 36px;
+  }
+
+  h3, a {
+    font-family: $roboto;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+
+  }
+
+  h3 {
+    padding-bottom: 20px;
+    color: $header-background;
+  }
+
+  .custom-style {
+    font-family: $roboto;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: $section-title-color;
+  }
+
+  p {
+    @extend .custom-style;
+    padding-bottom: 36px;
+    padding-left: 24px;
+
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  .inner-section{
+    text-align: center;
+    
+    a {
+      @include clearfix;
+      @extend .custom-style;
+      @include inline-flex;
+    }
+
+    .icon-style {
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
+
+    }
+
+    .skype-icon {
+      a {
+        &:before {
+          @extend .icon-style;
+          background: asset-url("skype.svg") no-repeat;
+        }
+      }
+    }
+
+    .mail-icon {
+      a {
+        &:before {
+          @extend .icon-style;
+          background: asset-url("email.svg") no-repeat;
+        }
+      }
+    }
+  }
+  .now {
+    text-align: center;
+    padding: 30px 0 10px;
+
+    p {
+      padding-left: 0;
+      padding-top: 20px;
+    }
+
+  }
+
+  .submit-button {
+    float: none;
+
+    a {
+      display: inline-block;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+= set_meta_tags('Blog', *get_localized_meta_for_obj(@meta_info))
+
+.content--below-header.blog--wrapper
+  -unless @pinned_article.nil?
+    %section.cover.page--cover
+      .cover--image{:style => "background-image: url('#{@pinned_article.image}');"}
+      .cover--info
+        .content--wrapper.content--padding
+          %h2.section--header.text--white.item--center.bottom--line
+            = last_uri_segment
+          .header--title
+            = link_to @pinned_article.title, article_path(@pinned_article.slug), class: 'text--white'
+          .small--content-wrapper
+            .section--description.description--container
+              %p.text--white
+                = @pinned_article.brief
+
+
+  %section.bg--grey
+    .content--wrapper.content--padding
+      .blog--navigation
+        %ul.menu-nav
+          %li
+            = link_to t('keywords.all')
+          - @categories.each do |c|
+            %li
+              = link_to localize_attr(c, 'name').upcase, category: c.name_en
+
+  - unless @articles.nil?
+    %section.section--large
+      .small--content-wrapper.archive--list
+        - @articles.each do |article|
+          %article
+            .article--image
+              %span{:style => "background-image: url('#{article.image}');"}
+            .article--info
+              = link_to article.title, article_path(article.slug)
+              .date
+                = l(article.created_at, format: '%B %d, %Y')
+              .description--container
+                %p 
+                  = article.brief
+
+        .pagination--wrapper
+          = paginate @articles, window: 2
+
+
+

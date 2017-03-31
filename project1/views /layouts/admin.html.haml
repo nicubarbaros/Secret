@@ -1,0 +1,47 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title BestChisinau
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3&key=#{Settings.apis.google.maps.key}", 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
+
+    = csrf_meta_tags
+
+    %script{:src => "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
+    %script{:src => "//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js", :type => "text/javascript"}
+    %script{:src => "//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js", :type => "text/javascript"}
+
+  - if user_signed_in?
+    %body
+      .wrapper
+        = link_to 'Home', admin_home_contents_path
+        = link_to 'Blog categories', admin_article_categories_path
+        = link_to 'Articles', admin_articles_path
+        = link_to 'About BEST', admin_abouts_path
+        = link_to 'Statistics', admin_group_statistics_path
+        = link_to 'Contact', admin_contacts_path
+        = link_to 'FAQ', admin_faqs_path
+        = link_to 'Members', admin_members_path
+        = link_to 'Recruitment', admin_recruitments_path
+        = link_to 'LBGs', admin_local_groups_path
+        = link_to 'Partners', admin_partners_path
+        = link_to 'Testimonials', admin_testimonials_path
+        = link_to 'Events', admin_event_categories_path
+        = link_to 'SEO', admin_default_meta_configs_path
+
+        =link_to 'logout', destroy_user_session_path, method: 'delete'
+        .content-wrapper
+          = yield
+
+  - else
+    %body.hold-transition.login-page
+      .login-box
+        .login-logo
+          %b
+            Admin
+          BEST Chisinau
+        .login-box-body
+          = yield
+

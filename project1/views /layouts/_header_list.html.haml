@@ -1,0 +1,29 @@
+%ul.menu-nav
+  %li.dropdown
+    %span
+      = t('navbar.events')
+    %ul
+      %li
+        = link_to t('dropdown.events.ebec'), event_category_path('ebec')
+      %li
+        = link_to t('dropdown.events.season'), event_category_path('season')
+      %li
+        = link_to t('dropdown.events.external'), event_category_path('external')
+      %li
+        = link_to t('dropdown.events.local'), event_category_path('local')
+  %li
+    = link_to t('navbar.partners'), partners_path
+  %li
+    = link_to t('navbar.recruitment'), recruitment_path
+  %li.dropdown
+    %span
+      = t('navbar.about')
+    %ul
+      %li
+        = link_to t('dropdown.about.local'), about_local_path
+      %li
+        = link_to t('dropdown.about.intern'), about_international_path
+  %li
+    = link_to t('navbar.contact'), contact_path
+  %li
+    = link_to t('navbar.blog'), blog_path

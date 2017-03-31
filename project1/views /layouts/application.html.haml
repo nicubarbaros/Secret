@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    = render partial: 'layouts/meta_properties'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = favicon_link_tag 'favicon.ico'
+    = yield :g_maps
+    = yield :instagram_js
+    / = javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3&key=#{Settings.apis.google.maps.key}", 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = csrf_meta_tags
+  %body{:class => "#{action_name}-page"}
+    - if in_namespace('admins')
+      = yield
+    - else
+      = render partial: 'layouts/event_bar'
+      = render partial: 'layouts/header'  
+      = render partial: 'layouts/messages'
+      = yield
+      = render partial: 'layouts/footer'
+      = render partial: 'layouts/subscription_notifications'
+    

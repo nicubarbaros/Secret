@@ -1,0 +1,4 @@
+- content_for :g_maps do
+  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3&key=#{Settings.apis.google.maps.key}", 'data-turbolinks-track': 'reload'
+  = javascript_include_tag "gmaps/google", 'data-turbolinks-track': 'reload' 
+  = javascript_include_tag 'google_maps.js','data-turbolinks-track': 'reload' 

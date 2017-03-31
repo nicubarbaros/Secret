@@ -1,0 +1,47 @@
+
+- content_for :title, t('recruiter.companies.index.page_title')
+.section-add-item
+  .container-flexible
+    .inner-container
+      .add-item-wrapper
+        .col-grid.col-4
+          .add-item-button
+            = link_to t('.create_company'), new_recruiter_company_path, :class => "add-item",  :remote => true
+        .col-grid.col-1
+          %span
+            = t('addsection.job')
+        .col-grid.col-1
+          %span
+            = t('addsection.created')
+        .col-grid.col-1
+          %span
+            = t('addsection.typology')
+        .col-grid.col-2
+          %span
+            = t('addsection.dynamics')
+
+= render :partial => 'layouts/modal', :locals => {:m_id => 'new-company'}
+
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .section-content{:style => @rec_companies.recents.empty? ? 'display: none;' : ''}
+        .section-header
+          .col-grid.col-10
+            %h3
+              = t('.latest')
+        .list-section-body
+          - @rec_companies.recents.each do |c|
+            = render :partial => 'listitem', :locals => {:c => c}
+
+
+      .section-content{:style => @rec_companies.recents.empty? ? 'display: none;' : ''}
+        .section-header
+          .col-grid.col-10
+            %h3
+              = t('.all')
+        .list-section-body
+          - @rec_companies.each do |c|
+            = render :partial => 'listitem', :locals => {:c => c}
+
+

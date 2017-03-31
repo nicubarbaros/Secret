@@ -1,0 +1,14 @@
+%h2.section--header.item--center.bottom--line
+  = t('navigation.contact_board.title')
+= form_for :contact_us, url: contact_board_path, id: 'contact--form', remote: true do |f|
+  .form--section-content
+    = f.label t('navigation.contact_board.name_surname')
+    = f.text_field :name_surname, required: true
+  .form--section-content
+    = f.label t('navigation.contact_board.email')
+    = f.text_field :email, required: true, type: 'email'
+  .form--section-content
+    = f.label t('navigation.contact_board.message')
+    = f.text_area :message, required: false
+  .btn--wrap.btn--fix-width
+    = f.submit t('buttons.submit'), class: 'btn btn--primary'

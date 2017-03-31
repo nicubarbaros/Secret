@@ -1,0 +1,18 @@
+.list-item.bottom-border{:id => "itemid-#{c.id}"}
+  .col-grid.col-4
+    .title
+      = link_to c.name, edit_recruiter_company_path(c)
+  .col-grid.col-1
+    %span
+      = c.job_lists.length
+  .col-grid.col-1
+    %span
+      = c.created_at.strftime("%d %b %Y")
+  .col-grid.col-1
+    %span.important
+      = t("alg.typology.#{c.values.downcase}")
+  .col-grid.col-2
+    %span
+      = t("alg.dynamics.#{c.size.downcase}")
+  .col-grid.col-1
+    = render :partial => 'layouts/optionbox', :locals => {:delete => recruiter_company_path(c), :edit => edit_recruiter_company_path(c)}

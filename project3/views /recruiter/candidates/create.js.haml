@@ -1,0 +1,9 @@
+var html = "#{escape_javascript(render :partial => 'candidate', locals: {:candidate => @candidate, :job => @job, :multiplier => nil})}";
+$('.section-content').show()
+$('.list-section-body').append(html);
+$('form').find('#firstname').val('');
+$('form').find('#lastname').val('');
+
+removeInside($('.modal-id'));
+notification("#{flash[:notice]}")
+$('.section-modal').hide();

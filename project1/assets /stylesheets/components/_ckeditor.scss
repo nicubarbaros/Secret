@@ -1,0 +1,22 @@
+.description--container {
+	
+	p {
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		@include margin--mixin($top: rem(50), $bottom: rem(20));
+		line-height: initial;
+	}
+
+	a {
+		color: $brand-color;
+	}
+
+	img {
+		width: 100% !important;
+		height: auto !important;
+	}
+}

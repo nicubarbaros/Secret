@@ -1,0 +1,17 @@
+@function em($target, $context) {
+  @return #{$target/$context}em;
+}
+
+@function rem($target) {
+  $baseSize: 14;
+  @return #{$target/$baseSize}rem;
+}
+
+@function flex-width($target, $context) {
+  @return (($target/$context)*100%);
+}
+
+// Convert illustrator, indesign and photoshop tracking into letter spacing.
+@function tracking( $target ){
+  @return ($target / 1000) * 1em;
+}

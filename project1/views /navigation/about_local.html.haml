@@ -1,0 +1,76 @@
+- title = localize_attr(@about, 'header_title')
+- brief = localize_attr(@about, 'header_brief')
+= set_meta_tags(title, *get_localized_meta_for_obj(@meta_info))
+
+.content--below-header
+  %section.cover.page--cover
+    .cover--image{:style => "background-image: url('#{@about.header_media}');"}
+    .cover--info 
+      .content--wrapper.content--padding
+        %h2.section--header.text--white.item--center.bottom--line
+          = t('.titles.header');
+        .header--title.text--white
+          = title
+        .small--content-wrapper
+          .section--description.description--container
+            %p.text--white
+              = brief
+        %span.arrow--down
+  %section.section--large
+    .content--wrapper.description--wrapper
+      %h2.section--header.t113ext--grey.item--center.bottom--line
+        = t('.titles.brief')
+      .description--container.text--grey
+        = raw localize_attr(@about, 'description')
+
+  %section.image--wrapper
+    .content--wrapper
+      = image_tag @about.image
+
+  - unless @stats.blank?
+    %section.section--large.bg--grey
+      %h2.section--header.item--center.bottom--line
+        = t('.titles.statistics')
+      .content--wrapper.enumerations--wrapper.enumerations--list
+        - @stats.each do |statistic|
+          .enumeration--container.column--3
+            .title
+              = statistic.number
+            .description--container
+              %p.paragraph
+                = localize_attr(statistic, 'title')
+
+  %section.section--large
+    .content--wrapper.description--wrapper
+      %h2.section--header.text--grey.item--center.bottom--line
+        = t('.titles.founders')
+      .description--container.text--grey
+        = raw localize_attr(@about, 'additional_text')
+  
+  %section.members--wrapper
+    .content--wrapper
+      %ul
+        - @founders.each do |f|
+          %li{:class =>"#{cycle("left", "right")}" }
+            .member--image{:style => "background-image: url('#{f.image}');"}
+              .member--info
+                .status.text--grey
+                  = localize_attr(f, 'position')
+                %h2.section--header.name
+                  = f.full_name
+
+                - unless f.facebook_url.empty?
+                  .list-socials
+                    .facebook-icon
+                      = link_to 'Facebook', f.facebook_url, class: 'facebook-icon', target: '_blank'
+  %section.section--action
+    .content--wrapper.flex--wrapper.content--padding
+      .action--wrapper
+        .header--title.text--grey
+          = t('.cta.title');
+        .small--content-wrapper
+          .section--description.description--container
+            %p.text--grey 
+              = t('.cta.description');
+        .btn--wrap.btn--fix-width
+          = link_to t('.cta.btn'), recruitment_path, class: 'btn btn--primary', target: '_blank'

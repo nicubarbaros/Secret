@@ -1,0 +1,133 @@
+.video-container-full {
+  background-color: #FAFAFA;
+  @include padding--mixin($top: rem(70), $bottom: rem(70));
+}
+
+.video-grid-module {
+	position: relative;
+  // @include padding--mixin ($top: rem(30), $bottom: rem(40));
+  @include cf;
+}
+
+.video-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  @include transition(all ease 0.3s); 
+}
+
+.outer-video-container {
+  @include margin--mixin($bottom: rem(50));
+
+  &:hover {
+    cursor: pointer;
+
+    .black-panel,
+    .video-thumbnail,
+    .video-title a {
+      @include transition(all ease 0.3s); 
+    }
+    .black-panel {
+      opacity: 0;
+    }
+
+    .video-thumbnail,
+    .black-panel {
+      @include margin--mixin($top: rem(-16), $right: rem(-16), $left: rem(-16));
+    }
+
+    .video-title a {
+      color: #000000;
+    }
+  }
+}
+
+.inner-video-container{
+  position: relative;
+  @include responsive--ratio(16,9, true);
+
+}
+
+
+.video-title {
+  @include margin--mixin($top: rem(25));
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;     /** IE6+, Firefox 7+, Opera 11+, Chrome, Safari **/
+  -o-text-overflow: ellipsis;  /** Opera 9 & 10 **/
+  width: 100%; 
+
+  a {
+  @include transition(all ease 0.3s); 
+   @include font--source(em(24,16), $main-font-color, 400, em(28, 24) );
+   @include mq('tablet-wide', 'max') {
+    font-size: em(16,16);
+    }
+  }
+}
+
+.black-panel {
+  @include transition(all ease 0.3s); 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(38, 38, 38, 0) 50%, rgba(38,38, 38, 1) 100%);
+  background: -webkit-linear-gradient(rgba(38,38, 38, 0) 50%, rgba(38,38, 38, 1) 100%);
+  background: -moz-gradient(rgba(38,38, 38, 0) 50%, rgba(38,38, 38, 1) 100%);
+}
+
+.video-details-section {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  @include padding--mixin($right: rem(32), $bottom: rem(32), $left: rem(32));
+  @include mq('phone-wide', 'max') {
+     @include padding--mixin($right: rem(16), $bottom: rem(16), $left: rem(16));
+  }
+
+  h5{
+
+    @include font--source(em(16,16), $secondary-font-color, 300, em(20, 16));
+    @include mq('tablet-wide', 'max') {
+      font-size: em(14,16);
+    }
+  }
+
+  .video-status {
+    @include cf;
+  }
+
+  ul {
+    list-style: none;
+  
+    li{
+      float: left;
+
+      span {
+        @include content;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: $secondary-font-color;
+        display: block;
+        @include margin--mixin($top: rem(8), $right: rem(7.5), $left: rem(7.5));
+      }
+
+      &:last-child{ 
+        float:right;
+      }
+    }
+  }
+}

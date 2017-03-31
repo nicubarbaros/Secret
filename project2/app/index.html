@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Duck Show</title>
+    <script>document.write('<base href="/" />');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="systemjs.config.js"></script>
+
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+  </head>
+  <body>
+    <duck-show>Loading</duck-show>
+  </body>
+</html>

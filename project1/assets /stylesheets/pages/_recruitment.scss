@@ -1,0 +1,17 @@
+.recruitment--wrapper {
+	.timer--wrapper {
+		@include flexbox;
+		@include justify-content(space-around);
+
+		.time {
+			@include font--source(em(30,14), false, 700, initial);
+		}
+
+
+		@include mq('phone-wide', min) {
+			.time {
+				font-size: em(60,14);
+			}
+		}
+	}
+}

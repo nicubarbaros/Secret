@@ -1,0 +1,25 @@
+%footer#footer.footer
+	.global--subscription-wrapper.bg--grey
+		.footer--wrapper
+			.subscription--container
+				%h2.section--header
+					= t('footer.subscription.message')
+				= render :partial => 'layouts/subscription_form'
+	.global--wrapper
+		.footer--wrapper
+			.footer--block-wrapper
+				.footer--block.footer--creators
+					%p
+						= t('footer.creators')
+						%span
+							&#10084
+						de
+						= link_to 'Vertigo', 'https://www.facebook.com/vertigointeractive/', target: '_blank'
+				.footer--block.footer--copy
+					%p
+						&#169 
+						= Time.current.year 
+						BEST Chișinău
+				.footer--block.footer--block-social
+
+					= render :partial => 'layouts/socials_list', locals: {facebook:  facebook_url, instagram: instagram_url, twitter: twitter_url}

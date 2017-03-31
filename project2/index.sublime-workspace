@@ -1,0 +1,293 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Valida",
+				"ValidationService\talias"
+			],
+			[
+				"Vali",
+				"ValidationService\talias"
+			],
+			[
+				"Form",
+				"FormData\tinterface"
+			],
+			[
+				"Ng",
+				"NgZone\talias"
+			],
+			[
+				"doc",
+				"docElem\tlet"
+			],
+			[
+				"wi",
+				"window\tvar"
+			],
+			[
+				"win",
+				"window_height_with_scroll\tlocal var"
+			],
+			[
+				"type",
+				"typeof\tkeyword"
+			],
+			[
+				"window",
+				"window_bottom_position\tlocal var"
+			],
+			[
+				"vide",
+				"videoService\tproperty"
+			],
+			[
+				"this",
+				"this_window\tlocal var"
+			],
+			[
+				"wind",
+				"window_bottom_position\tlocal var"
+			],
+			[
+				"ty",
+				"typeof\tkeyword"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 107.0,
+		"last_filter": "instal",
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"package contro",
+				"Package Control: Install Package"
+			],
+			[
+				"set syn",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"Package",
+				"Preferences: Browse Packages"
+			],
+			[
+				"pac",
+				"Install Package Control"
+			]
+		],
+		"width": 485.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '261dd1222b4693ce6d4f85f9c827ac06' + '6d5ab8ebdd020086947172a8a1356bb6'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/barbarosnico/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/barbarosnico/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Nicu/work/Self/React/first-app/src/App.js",
+		"/Nicu/work/Self/React/first-app/src/logo.svg",
+		"/Users/barbarosnico/Downloads/HCS Blog post Dariev.md",
+		"/Nicu/work/Vertigo/frontend/junior-duck-show/duck_front/app/basket/basket.service.ts",
+		"/Nicu/work/Vertigo/frontend/junior-duck-show/duck_front/app/basket/basket.routes.ts",
+		"/Nicu/work/Vertigo/frontend/junior-duck-show/duck_front/webpack.config.js",
+		"/Nicu/work/Vertigo/frontend/junior-duck-show/duck_front/app/assets/stylesheets/scss/base.scss",
+		"/Nicu/work/Vertigo/frontend/junior-duck-show/duck_front/app/assets/stylesheets/scss/layouts/_header.scss",
+		"/Nicu/work/Vertigo/frontend/junior-duck-show/duck_front/app/videos/video.service.ts",
+		"/Nicu/work/Vertigo/frontend/junior-duck-show/duck_front/app/foo.js",
+		"/Nicu/work/Vertigo/frontend/junior-duck-show/duck_front/app/assets/javascript/scrollview.d.ts",
+		"/Nicu/work/Vertigo/frontend/junior-duck-show/duck_front/app/components/footer/footer.component.html",
+		"/Nicu/work/Vertigo/frontend/junior-duck-show/duck_show/config.py",
+		"/Nicu/work/Vertigo/frontend/junior-duck-show/duck_show/config.example.py",
+		"/Nicu/work/Vertigo/frontend/junior-duck-show/duck_front/app/assets/stylesheets/scss-compass/global.scss",
+		"/Nicu/work/Vertigo/frontend/junior-duck-show/duck_show/__init__.py"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"home",
+			"background-color: #FFF;",
+			"*/",
+			"/* ",
+			"loginForm",
+			"console.log",
+			"\n    ",
+			"localhost",
+			"/';\n",
+			"userForm",
+			"system-polyfills.js",
+			"\n   ",
+			"items",
+			"  | async",
+			"-rc.5",
+			"a",
+			"top_position",
+			"dom_",
+			"bottom_position",
+			"item",
+			"element",
+			";\n",
+			"this",
+			"a",
+			"el",
+			";\n",
+			"doc",
+			"channel-info",
+			"previousScroll"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "index.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 325.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

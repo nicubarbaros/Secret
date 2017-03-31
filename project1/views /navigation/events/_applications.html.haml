@@ -1,0 +1,14 @@
+- unless @event.application_forms.blank?
+  %section
+    - @event.application_forms.each do |app_form|
+      .inner--wrapper.bg--grey{:class =>"#{cycle("right--box", "left--box")}" }
+        .visual--wrapper{:style => "background-image: url('#{app_form.image}');"}
+        .info--container
+          %h2.section--header.item--center.bottom--line
+            = localize_attr(app_form, 'title')
+          .description--container
+            %p.text--grey.paragraph
+              = localize_attr(app_form, 'description')
+          - unless app_form.questions.count.zero?
+            .btn--wrap.btn--fix-width
+              = link_to t('buttons.applications'), render_application_form_path(app_form.id), remote: true, class: 'btn btn--primary'

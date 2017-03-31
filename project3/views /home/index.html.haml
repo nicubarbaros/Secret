@@ -1,0 +1,75 @@
+- content_for :header_class, 'header-transparent'
+
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .sign-in-wrapper
+        - if company_signed_in?
+          .col-grid.col-4
+            .sign-in-form
+              .sign-in-company
+                %h2.statement-header
+                  = t('company.sessions.index.statement')
+                .middle-section-wrapper
+                  .continue-as
+                    = t('company.sessions.index.continue')
+                  .user-credential-wrapper
+                    .current-initial
+                      = current_company.company_spec.name[0, 1]
+                    .user-credential-info
+                      .current-name
+                        = current_company.company_spec.name
+                      .current-email
+                        = current_company.email   
+                .bottom-section-wrapper           
+                  .extra-links#sign-out
+                    = link_to t('sessions.logout'), destroy_company_session_path, :method => 'delete'
+                  .submit-button
+                    = link_to t('buttons.continue'), company_dashboard_index_path
+        -elsif recruiter_signed_in?   
+          .col-grid.col-4
+            .sign-in-form
+              .sign-in-recruiter
+                %h2.statement-header
+                  = t('recruiter.sessions.index.statement')
+                .middle-section-wrapper
+                  .continue-as
+                    = t('recruiter.sessions.index.continue')
+                  .user-credential-wrapper
+                    .current-initial
+                      = current_recruiter.last_name[0, 1]
+                    .user-credential-info
+                      .current-name
+                        = current_recruiter.first_name
+                        = current_recruiter.last_name
+                      .current-email
+                        = current_recruiter.email    
+                .bottom-section-wrapper           
+                  .extra-links#link-valign
+                    = link_to t('sessions.logout'), destroy_recruiter_session_path, :method => 'delete'
+                  .submit-button
+                    = link_to t('buttons.continue'), recruiter_dashboard_index_path
+        - else
+          .welcome-wrapper 
+            %p.big-text
+              = t('text.headling')
+            .col-grid.col-6
+              %p.small-text
+                = t('text.about1')
+            .col-grid.col-6
+              %p.small-text
+                = t('text.about2')
+          / .col-grid.col-4.toggle-visibility
+          /   .sign-in-form
+          /     .sign-in-company
+          /       = render "company/sessions/company_signin"
+        / - else
+        /   .col-grid.col-8
+        /     .sign-in-form#middle-line
+        /       .sign-in-recruiter
+        /         = render "recruiter/sessions/recruiter_signin"
+        /       .sign-in-company
+        /         = render "company/sessions/company_signin"
+              
+
+

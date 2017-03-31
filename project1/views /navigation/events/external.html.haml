@@ -1,0 +1,6 @@
+.events--wrapper.content--below-header#subcategories
+  = render partial: 'navigation/events/header', locals: {event: @event}
+
+  = render partial: 'navigation/events/description', locals: {event: @event}
+
+  = render partial: 'navigation/events/external_link', locals: {event: @event}

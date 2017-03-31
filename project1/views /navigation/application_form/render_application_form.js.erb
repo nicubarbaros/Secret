@@ -1,0 +1,5 @@
+var contactFormModal = $('#open--modal');
+
+contactFormModal.html('<%=j render partial: "navigation/application_form/application_form_popup", locals: {app_form: @app_form} %>');
+
+$('.section--modal').show();

@@ -1,0 +1,22 @@
+<div class="main-content">
+  <div *ngIf="accessory">
+    <div *ngIf="accessory.image_1">
+      <img src="{{apiHostName}}{{accessory.image_1}}">
+    </div>
+    <div *ngIf="accessory.image_2">
+      <img src="{{apiHostName}}{{accessory.image_2}}">
+    </div>
+    <div *ngIf="accessory.image_3">
+       <img src="{{apiHostName}}{{accessory.image_3}}">
+    </div>
+
+    <p>{{accessory.name}}</p>
+    <p>{{accessory.price}}</p>
+    <p>{{accessory.size}}</p>
+    <p>{{accessory.type}}</p>
+    <input #quantity type="number" name="quantity" value=1 min="1" step="1" placeholder="Quantity"><br>
+    
+    <button (click)="addToCart(accessory.type, accessory.id, quantity.value)">Add To Cart</button>
+    <a [routerLink]="['/basket']">Proceed ot checkout</a>
+  </div>
+</div>

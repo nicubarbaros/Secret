@@ -1,0 +1,68 @@
+- title = localize_attr(@home_content, 'header_title')
+= set_meta_tags(title, *get_localized_meta_for_obj(@meta_info))
+.cover.home--cover
+  .cover--image{:style => "background-image: url('#{@home_content.image}');"}
+  .cover--info
+    .content--wrapper.content--padding
+      .header--welcome-message
+        = localize_attr(@home_content, 'welcome_message')
+      .header--title
+        = title
+      .header--brief.description--container
+        %p.text--white
+          = localize_attr(@home_content, 'header_brief')
+      / %span.arrow--down
+%section.section--large
+  %h2.section--header.item--center.bottom--line
+    = t('.titles.events')
+  .content--wrapper.flex--wrapper
+    - @events.each do |event|
+      .flex--item-container
+        .item--image{:style => "background-image: url('#{event.image}');"}
+        .item--panel-content
+          .item--title
+            = link_to localize_attr(event, 'title'), event_path(event.event_subcategory.event_category, event.event_subcategory, event)
+          .item--start-date
+            = l(event.start_date, format: '%B %d, %Y')
+          .item--brief.description--container
+            %p
+              = localize_attr(@home_content, 'header_brief')
+        = link_to event_path(event.event_subcategory.event_category, event.event_subcategory, event), class: "item--panel-cover" do
+          %span
+= render partial: 'layouts/testimonials'
+
+- main_partner = Partner.main
+- unless main_partner.nil?
+  %section.home--partner.bg--grey
+    .inner--wrapper.left--box
+      .visual--wrapper{:style => "background-image: url('#{main_partner.background_image}');"}
+      .info--container
+        %h2.section--header.item--center.bottom--line
+          = t('.titles.partner')
+        .description--container
+          %p.text--grey.paragraph
+            "
+            = localize_attr(main_partner, 'brief')
+            "
+        .btn--wrap.btn--fix-width
+          = link_to t('buttons.partners'), partner_path(main_partner), class: 'btn btn--primary'
+
+  %section.section--large
+    %h2.section--header.item--center.bottom--line
+      = t('.titles.partners')
+    .content--wrapper
+      %ul.partners--wrapper
+        - @top_partners.each do |partner|
+          %li
+            .partner{:style => "background-image: url('#{partner.logo}');"}
+
+
+%section.section--large
+  %h2.section--header.item--center.bottom--line
+    = t('.titles.instagram')
+  #instagram-feed.owl-carousel
+
+
+
+- content_for :instagram_js do
+  = javascript_include_tag 'instagram_feed','data-turbolinks-track': 'reload' 

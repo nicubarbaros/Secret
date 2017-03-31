@@ -1,0 +1,41 @@
+.cover--info{
+	@include margin--mixin($top: rem(50));
+}
+
+.header--title {
+	@include font--source(em(30, 14), false, 900, 1.2);
+}
+
+@include mq('tablet-wide', 'min') {
+	.header--title {
+		font-size: em(60, 14);
+	}
+
+	.cover--info {
+		@include margin--mixin($top: rem(100));
+	}
+}
+
+.description--wrapper {
+	@include flexbox;
+	@include justify-content(space-between);
+	@include flex-direction(column);
+	padding: 0 rem($gutter/2);
+
+
+	.description--container {
+		text-align: center;
+	}
+	
+	@include mq('tablet-wide', 'min') {
+		@include flex-direction(row);
+
+		.item--center {
+			@include align-items(flex-start);
+		}
+		.description--container {
+			max-width: 60.763888888888886%;
+			text-align: left;
+		}
+	}
+}

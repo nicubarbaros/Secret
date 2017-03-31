@@ -1,0 +1,114 @@
+@mixin clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin push--auto {
+  margin: { 
+    left: auto;
+    right: auto;
+  }
+}
+
+$breakpoints: (
+  "phone":        400px,
+  "phone-wide":   480px,
+  "phablet":      560px,
+  "tablet-small": 640px,
+  "tablet":       640px,
+  "tablet-wide":  1024px,
+  "desktop":      1248px,
+  "desktop-wide": 1440px
+);
+
+// usgage
+// .image {
+//    width: 50%;
+//    @include mq('phone-wide', 'max') {
+//      width: 100%;
+//    }
+//  }
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+     @warn "If map_has_key";
+  }
+
+  @if $type == max {
+      $width: $width - 1px;
+  }
+    
+  @media only screen and (#{$type}-width: $width) {
+      @content;
+  }
+}
+
+@mixin transform($val) {
+  -webkit-transform: $val;
+  -moz-transform: $val;
+  -ms-transform: $val;
+  transform: $val;
+}
+
+@mixin transition( $val : ease 0.5s ) {
+  -webkit-transition: $val;
+  -moz-transition:$val;
+  -o-transition:$val;
+  -ms-transition:$val;
+  transition:$val;
+}
+
+@mixin font--source($size: false, $colour: false, $weight: false,  $lh: false) {
+  font-family: $roboto, Helvetica, Arial, sans-serif;
+  @if $size { font-size: $size; }
+  @if $colour { color: $colour; }
+  @if $weight { font-weight: $weight; }
+  @if $lh { line-height: $lh; }
+}
+
+@mixin padding--mixin($some-number: false, $top: false, $right: false, $bottom: false, $left: false) {
+  padding: 0;
+  @if $some-number {padding: $some-number; }
+  @else {
+    @if $top {padding-top: $top; }
+    @if $right {padding-right: $right; }
+    @if $bottom {padding-bottom: $bottom; }
+    @if $left {padding-left: $left; }
+  }
+}
+
+@mixin margin--mixin($some-number: false, $top: false, $right: false, $bottom: false, $left: false) {
+  margin: 0;
+  @if $some-number {margin: $some-number; }
+  @else {
+    @if $top {margin-top: $top; }
+    @if $right {margin-right: $right; }
+    @if $bottom {margin-bottom: $bottom; }
+    @if $left {margin-left: $left; }
+  }
+}
+
+@mixin content {
+  content: '';
+}
+
+@mixin sprite--position($row, $col) {
+  background-position: (-1 * $icon-width * ($col - 1) ) (-1 * $icon-height * ($row - 1));
+}
+
+@mixin set--color($color: white){
+  a,
+  span {
+    color: $color;
+  }
+}
+
+@mixin tracking( $target ){
+  letter-spacing: tracking( $target );
+}

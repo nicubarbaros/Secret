@@ -1,0 +1,22 @@
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .sign-up-wrapper
+        .col-grid.col-4
+          .sign-in-form
+            = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+              %h2.statement-header
+                = t('recruiter.sessions.index.signin_as')
+              .error
+                = flash[:alert]
+              .credential-form
+                .text-input-wrapper
+                  = f.input :email, required: false, autofocus: true, label: t('recruiter.sessions.index.email')
+                .text-input-wrapper
+                  = f.input :password, required: false,  label: t('recruiter.sessions.index.password')
+                .text-input-wrapper#checkbox
+                  = f.input :remember_me, label: t('sessions.remember'), as: :boolean if devise_mapping.rememberable?
+                .extra-links
+                  = render "recruiter/shared/links"
+                .submit-button
+                  = f.button :submit, t('sessions.login')

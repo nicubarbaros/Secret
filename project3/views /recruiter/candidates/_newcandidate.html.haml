@@ -1,0 +1,10 @@
+= form_for @candidate, url: {:action => 'create', :controller => 'recruiter/candidates', :job_id => @job}, :id => 'form-candidate', :remote => 'true' do |f|
+  .credential-form
+    .text-input-wrapper
+      = f.label t('recruiter.candidates.new.first_name')
+      = f.text_field :firstname, :id => 'firstname', :required => true
+    .text-input-wrapper
+      = f.label t('recruiter.candidates.new.last_name')
+      = f.text_field :lastname, :id => 'lastname', :required => true
+    .submit-button
+      = f.submit t('recruiter.candidates.new.create')

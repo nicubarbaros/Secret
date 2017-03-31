@@ -1,0 +1,17 @@
+.attachments--wrapper {
+  @include flexbox;
+  @include justify-content(center);
+
+  a {
+    @include transition(all 0.15s);
+    margin-left: rem(50);
+
+    &:first-of-type{
+      margin-left: 0;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

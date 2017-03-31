@@ -1,0 +1,70 @@
+.testimonials--wrapper {
+  #testimonial--image {
+
+    display: none;
+
+    @include mq('tablet-wide', 'min') {
+      width: 50%;
+      display: block;
+    }
+
+    .visual--wrapper {
+      width: 100%;
+      background-position-x: 50%;
+      background-position-y: 0;
+    }
+  }
+
+  .owl-dots {
+    display: inline-flex;
+
+    .owl-dot {
+      @include font--source(em(18, 14), $form-border, 500, 32/18);
+      background-color: $form-border;
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      text-indent: -100px;
+      overflow: hidden;
+      @include margin--mixin($left: rem(5), $right: rem(5));
+
+      &.active {
+        background-color: $brand-color;
+        border: none;
+      }
+
+      @include mq('tablet-wide', 'min') {
+
+        border: 1px solid $form-border;
+        background: transparent;
+        width: 32px;
+        height: 32px;
+        border-radius: 0;
+        text-align: center;
+        text-indent: 0;
+
+        &.active {
+          background-color: $btn-secondary;
+          color: $text-white-color;
+          border: none;
+        }
+      }
+    }
+  }
+
+  .testimonial--author {
+
+    @include margin--mixin($top: rem(50));
+
+    p {
+
+      @include font--source(em(12, 14), false, 500, normal);
+      font-size: rem(12);
+
+      &:first-child {
+      	margin-bottom: rem(5);
+      }
+    }
+  }
+
+}

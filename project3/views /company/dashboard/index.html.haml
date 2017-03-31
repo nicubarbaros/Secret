@@ -1,0 +1,16 @@
+- content_for :title, t('.page_title')
+- content_for :current_location, 'box_shadow_class'
+
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .section-content{:style => @jobs.empty? ? 'display: none;' : ''}
+        .section-header
+          .col-grid.col-10
+            %h3
+              = t('.latest_jobs')
+        .list-section-body
+          - @jobs[0..5].each do |jl|
+            = render :partial => 'company/jobs/listitem', :locals => {:jl => jl}
+
+

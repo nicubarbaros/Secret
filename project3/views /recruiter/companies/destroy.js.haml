@@ -1,0 +1,5 @@
+$(".list-item#itemid-#{@rec_company.id}").slideUp()
+notification("#{flash[:notice]}")
+
+
+$('.companies-count span').text("#{current_recruiter.company_specs.count}")

@@ -1,0 +1,61 @@
+
+- content_for :title, t("#{@job.name}")
+
+.section-add-item
+  .container-flexible
+    .inner-container
+      .candidate-container
+        .add-item-wrapper
+          .col-grid.column-3
+            .add-item-button
+              = link_to t('recruiter.candidates.new.create'), new_company_job_candidate_path(@job), :class => "add-item", :remote => true
+          .col-grid.column-1
+          .col-grid.column-1
+            %span
+              = t('addsection.ratio')
+          .col-grid.column-1
+
+//render modal with id that comes from js file
+/ = render :partial => 'layouts/modal', :locals => {:m_id => 'new-candidate'}
+/ = render :partial => 'layouts/modal', :locals => {:m_id => 'edit-job'}
+
+= render :partial => 'layouts/modal', :locals => {:m_id => 'open-modal'}
+
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .candidate-container
+        .edit-item-wrapper
+          .info-wrapper
+            .submit-button.info-button
+              .info-icon
+            .item-info
+              %p.name
+                = @job.name
+              %p
+                = t("alg.focus.#{@job.focus.downcase}")
+              - if @job.description
+                %p
+                  = @job.description
+          .submit-button.edit-button
+            = link_to t('.edit_job'), edit_company_job_path(@job), :class => "edit-item", :remote => true
+
+        .section-content{:style => @job.candidates.empty? ? 'display: none;' : ''}
+          .section-header#without-margin-top
+            .col-grid.column-6
+              %h3
+                = t('text.all')
+          .list-section-header
+            .list-item
+              .col-grid.column-4
+                .title
+                  %span
+                    = t('alg.score.maximum')
+              .col-grid.column-1
+                %span
+                  15.000                
+          .list-section-body
+            - coefs = @multiplier.coefficients
+            - candidates = @job.candidates.sort{|l,r| r.scores.map.with_index{|s,i| s*coefs[i]}.reduce(:+) <=> l.scores.map.with_index{|s,i| s*coefs[i]}.reduce(:+)}
+            - candidates.each  do |c|
+              = render :partial => 'company/candidates/candidate', locals: {:candidate => c, :job => @job, :multiplier => @multiplier}

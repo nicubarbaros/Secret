@@ -1,0 +1,38 @@
+.main-wrapper
+  .container-flexible
+    .inner-container.info-pages-wrapper
+      .col-grid.col-6
+        %h1 
+          = t('text.guide')
+        - locale = I18n.locale.to_s
+        - @guidelines.each do |gl|
+          %h3
+            = locale == 'en' ? "#{gl.step}." : "#{gl.step}."
+            = locale == 'en' ? gl.title : gl.title_rom
+          %p
+            = locale == 'en' ? gl.description : gl.description_rom
+        %h3.now
+          .submit-button
+            - if company_signed_in?
+              = link_to t('text.now'), company_dashboard_index_path
+            - elsif recruiter_signed_in?
+              = link_to t('text.now'), recruiter_dashboard_index_path
+            - else
+              = link_to t('text.now'), root_path
+          %p
+            = t('text.first')
+        %h1
+          = t("text.help")
+        - if @help.present? 
+          .col-grid.col-5
+            .inner-section
+              %h3
+                Email
+              .mail-icon
+                = mail_to @help.email, @help.email.downcase
+          .col-grid.col-5
+            .inner-section
+              %h3
+                Skype
+              .skype-icon
+                = link_to @help.skype, "skype:#{@help.skype.chomp}?chat"

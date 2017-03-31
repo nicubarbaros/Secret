@@ -1,0 +1,85 @@
+.footer {
+  position: relative;
+  z-index: 15;
+  color: white;
+
+  .subscription--container {
+		padding: rem(30) 0;
+	}
+}
+
+.global--wrapper {
+	background: $black-background;
+}
+
+.footer--wrapper {
+	max-width: $max-width;
+  padding: 0 rem($mobile-border-padding);
+  @include push--auto;
+
+  @include mq('tablet-wide', 'min') {
+  	padding: 0 rem($desktop-border-padding);
+  }
+
+}
+
+.footer--block {
+	text-align: left;
+	position: relative;
+	@include font--source(em(12,14), $text-white-color, 400, 1);
+
+	span {
+		color: $brand-color;
+	}
+
+	a {
+		color: white;
+		font-weight: 500;
+
+		&:hover {
+			color: $brand-color;
+		}
+	}
+
+	&.footer--creators {
+    text-align: center;
+	}	
+}
+
+.footer--block-social,
+.footer--copy {
+	display: none;
+}
+
+.subscription--container form {
+	@include flexbox;
+	@include justify-content(center);
+	@include align-items(center);
+	@include flex-direction(column);
+}
+
+.footer--block-wrapper {
+	@include padding--mixin($top: rem(19), $bottom: rem(19));
+	@include flexbox;
+	@include justify-content(center);
+	@include align-items(center);
+
+	@include mq('tablet-wide', 'min') {
+		@include justify-content(space-between);
+	}
+}
+
+@include mq('tablet-wide', 'min'){
+	.footer--block {
+		font-size: 1em;
+	}
+	
+	.footer--block-social,
+	.footer--copy {
+		display: block;
+	}
+
+	.subscription--container form{
+		@include flex-direction(row);
+	}	
+}

@@ -1,0 +1,72 @@
+.edit-entity-wrapper {
+  @include display-flex();
+  @include flex-direction();
+  align-items: center;
+  @include flex();
+  padding: 72px 0;
+
+
+  .edit-entity-form {
+    width: 100%;
+    margin: 0 auto;
+    background: $white-color;
+    display: inline-block;
+    @include box-shadow(0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24));
+    padding: 36px;
+
+    form {
+      width: 100%;
+      @include clearfix;
+    }
+  }
+}
+
+
+.edit-item-wrapper {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.info-wrapper {
+
+  position: relative;
+  .item-info {
+    visibility: hidden;
+    background: $white-color;
+    width: 300px;
+    padding: 15px;
+    position: absolute;
+    text-align: initial;
+    right: 0;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    @include box-shadow(0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23));
+    @include transform(translateY(5px));
+    z-index: 50;
+    
+    p {
+      font-family: $roboto;
+      font-weight: 300;
+      font-size: 12px;
+      margin-bottom: 10px;
+      
+      &.name {
+        font-weight: normal;
+        font-size: 14px;
+      }
+      &:last-child {
+      margin-bottom: 0;
+      }
+    }
+    &.isShown {
+      visibility: visible;
+    }
+  }
+}
+#without-margin-top {
+  margin-top: 0;
+}

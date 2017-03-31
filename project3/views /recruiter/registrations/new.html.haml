@@ -1,0 +1,25 @@
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .sign-up-wrapper
+        .col-grid.col-4
+          .sign-up-form
+            = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+              %h2.statement-header
+                = t('recruiter.sessions.index.signup_as')
+              .credential-form
+                = f.error_notification
+                .text-input-wrapper
+                  = f.input :first_name, autofocus: true, label: t('.first_name')
+                .text-input-wrapper
+                  = f.input :last_name, label: t('.last_name')
+                .text-input-wrapper
+                  = f.input :email, required: true, label: t('.email')
+                .text-input-wrapper
+                  = f.input :password, required: true, placeholder: (t('.password_hint') if @minimum_password_length), label: t('.password')
+                .text-input-wrapper
+                  = f.input :password_confirmation, required: true, label: t('.repeat_password')
+                .extra-links#link-valign
+                  = render "recruiter/shared/links"
+                .submit-button
+                  = f.button :submit, t('sessions.register')

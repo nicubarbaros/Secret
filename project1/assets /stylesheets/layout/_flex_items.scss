@@ -1,0 +1,120 @@
+.flex--wrapper{
+	@include flexbox;
+	@include flex-wrap(wrap);
+	@include justify-content(center);
+}
+
+.flex--item-container {
+	width: 100%;
+	height: 210px;
+	position: relative;
+	overflow: hidden;
+
+	.item--brief {
+		display: none;
+		@include transition(all 0.25s);
+		opacity: 0;
+	}
+
+	&:hover{
+		.item--panel-cover{
+				top: 0;
+		}
+
+		.item--brief {
+			display: block;
+			opacity: 1;
+		}
+
+		.item--icon {
+			opacity: 1;
+		}
+	}
+	
+	.item--image{
+		width: 100%;
+    height: 100%;
+    display: block;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    position: relative;
+    z-index: 0;
+	}
+
+	.item--icon {
+		position: absolute;
+		left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 41.66666666666667%;
+    z-index: 1000;
+    opacity: 0;
+    @include transition(all 0.25s);
+	}
+
+	@include mq('tablet-wide', 'min') {
+		width: 50%;
+		height: 392px;
+	}
+}
+
+.item--panel-content {
+	position: absolute;
+  bottom: 0;
+  z-index: 10;
+  color: white;
+	@include padding--mixin($left: rem(24), $bottom: rem(24), $right: rem(24));
+
+  @include mq('tablet-wide', 'min') {
+    @include padding--mixin($left: rem(44), $bottom: rem(30), $right: rem(44));
+  }
+
+	.item--title {
+		@include font--source(em(16,14), $text-white-color, 700, 1);
+
+		a {
+			color: white;
+		}
+		
+		@include mq('tablet-wide', 'min') {
+			font-size: em(32,14);
+		}
+	}
+
+	.item--start-date {
+		@include font--source(em(10,14), $text-white-color, 300, 1);
+		font-family: $merriweather;
+		@include margin--mixin($top: rem(5));
+
+		@include mq('tablet-wide', 'min') {
+			font-size: em(12,14);
+			@include margin--mixin($top: rem(10));
+		}
+	}
+
+	.item--brief {
+		@include margin--mixin($top: rem(5));
+
+		@include mq('tablet-wide', 'min') {
+			@include margin--mixin($top: rem(10));
+		}
+	}
+}
+
+.item--panel-cover {
+	  content: "";
+    display: block;
+    background-color: $brand-color;
+    position: absolute;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    @include transition(all 0.25s);
+
+    &.open{
+    	top: 0;
+    }
+}

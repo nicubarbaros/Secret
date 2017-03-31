@@ -1,0 +1,16 @@
+%style{:media => "screen"}
+  \.bottom--line::after{border-color: #{@event.event_subcategory.color};} 
+
+%section.cover.page--cover
+  .cover--info
+    .content--wrapper.content--padding
+      %h2.section--header.text--grey.item--center.bottom--line
+        = @event.event_subcategory.name
+      .header--title{:style => "color: #{event.event_subcategory.color}"}
+        = localize_attr(@event, 'title')
+      .small--content-wrapper
+        .section--description.description--container
+          %p.text--grey
+            = localize_attr(@event, 'brief')
+      %span.arrow--down.events
+      = render partial: 'navigation/events/attachments', locals: {event: @event}

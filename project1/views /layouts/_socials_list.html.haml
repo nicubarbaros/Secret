@@ -1,0 +1,10 @@
+%ul.list-socials
+  - unless facebook.blank?
+    %li.facebook-icon
+      = link_to 'Facebook', facebook, class: 'facebook-icon', target: '_blank'
+  - unless instagram.blank?
+    %li.instagram-icon
+      = link_to 'Instagram', instagram, class: 'instagram-icon', target: '_blank'
+  - unless twitter.blank?
+    %li.twitter-icon
+      = link_to 'Twitter', twitter, class: 'twitter-icon', target: '_blank'

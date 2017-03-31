@@ -1,0 +1,40 @@
+html,
+body {
+  background: #fff;
+  color: $text-color;
+  font-size: 14px;
+  font-family: $roboto;
+  font-weight: 300;
+  line-height: 21px;
+  letter-spacing: .05em;
+  overflow-x: hidden !important;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+ul {
+  list-style: none;
+}
+
+a, span, ul, input, p, h1, h2, h3, h4, h5, h6 {
+  @include padding--mixin();
+  @include margin--mixin();
+}
+
+a {
+  text-decoration: none;
+}
+input, textarea, select {
+  border: none;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+// h1 {
+//   font-size: rem(32);
+// }

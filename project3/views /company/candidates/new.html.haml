@@ -1,0 +1,12 @@
+.main-wrapper
+  .container-flexible
+    .inner-container
+      = form_for @candidate, url: {:action => :create, :controller => 'company/candidates', :job_id => @job} do |f|
+        %p
+          = f.label t('.first_name')
+          = f.text_field :firstname, :id => 'firstname', required: true
+        %p
+          = f.label t('.last_name')
+          = f.text_field :lastname, :id => 'lastname', required: true
+        %br
+          = f.submit t('.create')

@@ -1,0 +1,7 @@
+var newJob = $('#new-job');
+newJob.html('#{j render partial: "newjob"}')
+newJob.append('#{j render partial: "newcompany"}')
+
+\// calling customSelect method from application js
+\// this will replace the default select with ul and li
+customSelect();

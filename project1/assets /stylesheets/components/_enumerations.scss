@@ -1,0 +1,59 @@
+.enumerations--wrapper  {
+  @include flexbox;
+  //@include justify-content(center);
+  @include flex-wrap(wrap);
+
+  &.enumerations--list {
+    margin-bottom: -50px;
+  }
+
+  .enumeration--container {
+    padding-left: rem($mobile-border-padding);
+    padding-right: rem($mobile-border-padding);
+
+    padding-bottom: 50px;
+
+  }
+
+  .column--2,
+  .column--3 {
+    width: 50%;
+  }
+
+
+  .title {
+    @include font--source(em(18,14), false, 700, initial);
+    text-transform: uppercase;
+    margin-bottom: rem(15);
+  }
+
+  .image {
+    width: 80px;
+    height: 80px;
+    @include margin--mixin($bottom: rem(25));
+  }
+}
+
+@include mq('tablet-wide', 'min') {
+  .enumerations--wrapper {
+    .enumeration--container {
+
+      padding-left: rem($desktop-border-padding);
+      padding-right: rem($desktop-border-padding);
+    }
+
+    .column--3{
+      width: 33.3333333333333%;
+    }
+
+    .title {
+      font-size: em(24,14);
+
+      margin-bottom: rem(30);
+    }
+
+    .image {
+      @include margin--mixin($bottom: rem(50));
+    }
+  }
+}

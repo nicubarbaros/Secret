@@ -1,0 +1,60 @@
+
+.notification-container {
+  display: flex;
+  position: fixed;
+  z-index: 900;
+  min-width: 8%;
+  top: 20px;
+  right: 20px;
+
+  .notify-x {
+    top: 16.5px;
+    right: 24px;
+    width: 28px;
+    height: 28px;
+    background: none;
+    @include border-radius(50%);
+    position: absolute;
+    cursor: pointer;
+    display: block;
+    z-index: 1000;
+    
+    &:hover {
+      background: $border-color;
+    }
+
+    span {
+      display: block;
+      width: 12px;
+      background: asset-url("icons/close-x.svg") no-repeat;
+      z-index: 1000;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -6px;
+      margin-left: -6px;
+      text-indent: -9999px;
+    }
+  }
+  .notification {
+    background: white;
+    top: 0;
+    width: auto;
+    clear: both;
+    position: relative;
+    max-width: 100%;
+    padding: 22px 0;
+    padding-left: 24px;
+    padding-right: 66px;
+    font-family: $roboto;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 16px;
+    color: $header-background;
+    @include display-flex();
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    align-item: center;
+    @include box-shadow(0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23));
+  }
+}

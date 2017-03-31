@@ -1,0 +1,8 @@
+= form_for :subscribe, :url => subscribe_path, :method => 'post', :remote => true do |f|
+	
+	.form--section-content
+		= f.email_field :email, :placeholder => 'Email', type: 'email'
+	.btn--wrap.btn--fix-width
+		= f.submit t('buttons.subscribe'), class: 'btn btn--secondary'
+
+

@@ -1,0 +1,42 @@
+//colors
+$brand-color: #ef5350;
+$secondary-color: #f5f5f5;
+
+$text-color: #343434;
+$text-white-color: #fff;
+
+$black-background: #343434;
+
+//buttons
+$btn-primary: $brand-color;
+$btn-secondary: #343434;
+
+$btn-border-primary: $btn-primary;
+$btn-border-secondary: $btn-secondary;
+
+
+//forms
+$form-border: #acacac;
+$form-border-focus: #343434;
+$form-border-error: $brand-color;
+
+//sprites
+$icon-width: 20px;
+$icon-height: 20px;
+$sprite-rows: 4;
+$sprite-cols: 5;
+
+//values
+$max-width: 1200px;
+$btn-width: 260px;
+$min-btn-width: 150px;
+$btn-border-width: 2px;
+$desktop-border-padding: 14;
+$mobile-border-padding: 24;
+$gutter: 28;
+$vh: 80vh;
+
+//pagination
+$current_background: #343434;
+$element_width: 32px;
+$element_height: 32px;

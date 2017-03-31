@@ -1,0 +1,2 @@
+- Am consumat API si am incadrat datele in view. 
+- Anuglar2, HTML, SCSS

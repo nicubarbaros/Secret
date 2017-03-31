@@ -1,0 +1,105 @@
+.facebook-icon,
+.instagram-icon,
+.twitter-icon,
+.email-icon,
+.custom--attachment,
+.schedule--attachment,
+.member--phone,
+.member--email,
+.arrow--down {
+  background-image: asset-url('sprite.svg');
+  background-repeat: no-repeat;
+  background-size: $sprite-cols*$icon-width $sprite-rows*$icon-height;
+  width: $icon-width;
+  height: $icon-height;
+  display: block;
+  overflow: hidden;
+  text-indent: 110%;
+}
+
+
+.black--icons {
+	.facebook-icon {
+		@include sprite--position(2, 1);
+	}
+
+	.instagram-icon {
+		@include sprite--position(2, 2);
+	}
+
+	.email-icon {
+		@include sprite--position(2, 3);
+	}
+
+	.twitter-icon{
+		@include sprite--position(2, 4);
+	}
+}
+
+.header,
+.header.sticky{
+	.list-socials{
+		@extend .black--icons;
+	}
+}
+
+.list-socials{
+	@extend .black--icons
+}
+
+
+.home-page,
+.footer--block-wrapper {
+	@include mq("tablet-wide", 'min'){
+		.list-socials{
+			.facebook-icon {
+		  	@include sprite--position(1, 1);
+			}
+
+			.instagram-icon {
+		  	@include sprite--position(1, 2);
+			}
+
+			.email-icon {
+		  	@include sprite--position(1, 3);
+			}
+
+			.twitter-icon{
+				@include sprite--position(1, 4);
+			}
+		}
+	}
+}
+
+.arrow--down {
+	@include sprite--position(3, 1);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: rem(15);
+
+  @include mq("tablet-wide", 'min') {
+  	margin-bottom: rem(30);
+  }
+
+  &.events {
+  	@include sprite--position(4, 1);
+  }
+}
+
+.custom--attachment {
+	@include sprite--position(3,3);
+}
+
+.schedule--attachment, {
+	@include sprite--position(3,2);
+}
+
+.member--phone{
+	@include sprite--position(3,4);
+}
+
+.member--email, {
+	@include sprite--position(3,5);
+}

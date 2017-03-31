@@ -1,0 +1,23 @@
+%header.main-header
+  = link_to admin_dashboard_index_path, :class => "logo" do
+    %span.logo-mini
+      %b G
+    %span.logo-lg
+      %b Gaus
+  %nav.navbar.navbar-static-top{:role => "navigation"}
+    %a.sidebar-toggle{"data-toggle" => "offcanvas", :href => "#", :role => "button"}
+      %span.sr-only Toggle navigation
+    .navbar-custom-menu
+      %ul.nav.navbar-nav
+        %li.dropdown.user.user-menu
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %span.hidden-xs Gaus Admin
+          %ul.dropdown-menu
+            %li.user-header
+              %p
+                = current_admin.email
+              %small
+                = Time.now.strftime ("%b %d, %Y")
+            %li.user-footer
+              .pull-right
+                = link_to 'Logout', destroy_admin_session_path, :method => :delete, :class => "btn btn-default btn-flat"

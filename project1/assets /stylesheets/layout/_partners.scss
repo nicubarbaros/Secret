@@ -1,0 +1,42 @@
+.partners--wrapper {
+	max-width: 85%;
+	margin: 0 auto;
+	@include flexbox;
+	@include align-items(center);
+	@include flex-wrap(wrap);
+	@include justify-content(center);
+
+	@include mq('phablet', 'min') {
+		max-width: 66.66666666666666%;
+	}
+	.partner {
+		background-repeat: no-repeat;
+    background-size: 75.75757575757575%;
+    background-position: 50%;
+    padding-top: 75.75757575757575%;
+
+	}
+
+	// a {
+	// 	display: block;
+	// 	text-indent:-9999px;
+	// 	@include transition(all 0.15s);
+	// 	border: 2px solid $brand-color;
+	// 	&:hover {
+	// 		transform: scale(1.2);
+	// 	}
+	// }
+
+	li {
+		
+		padding: 1.75%;
+		width: 33.3333333333%;
+
+		@include mq('phone-wide', 'min') {
+			width: 25%;
+		}
+		@include mq('phablet', 'min') {
+			width: 20%;
+		}
+	}
+}

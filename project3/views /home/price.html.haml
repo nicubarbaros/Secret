@@ -1,0 +1,32 @@
+.main-wrapper
+  .container-flexible
+    .inner-container.info-pages-wrapper
+      .col-grid.col-4
+        %section.pricing
+          .pricing-box
+            .pricing-box-header
+              %h3.pricing-title
+                = t('payment.pricing')
+              %h3.pricing-price
+                = "$#{Settings.paypal.amount}"
+                %span
+                  = t('payment.price')
+               
+            .pricing-box-content
+              %h5
+                = t('payment.for')
+              %p
+                = t('payment.limit')
+              %p
+                = t('payment.support')
+              %p
+                = t('payment.access')
+              %p
+                = t('payment.algorithm')
+              %p
+                = t('payment.interview')
+              %h5
+                = t('payment.with')
+              .bottom-box-section
+                .paypal-button
+                  = link_to "#{t('payment.now')}", new_company_session_path

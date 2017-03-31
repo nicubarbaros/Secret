@@ -1,0 +1,82 @@
+- locale = I18n.locale.to_s
+
+- content_for :title, @candidate.firstname << " " << @candidate.lastname
+
+:javascript  
+  $("#answers_#{@candidate.id}").sisyphus();
+
+= render :partial => "layouts/scoring";
+
+= render :partial => 'layouts/modal', :locals => {:m_id => 'update-candidate'}
+
+.main-wrapper
+  .container-flexible
+    .inner-container
+      .candidate-container 
+        .edit-item-wrapper
+          .submit-button.edit-button
+            = link_to t('recruiter.candidates.edit.edit_candidate'), edit_recruiter_job_candidate_path,  :class => "edit-item", :remote => true
+        .category-tabs
+          %nav
+            %ul.tabs-navigation
+              %li
+                - @categories.each_with_index do |c, i|
+                  %a{"data-content" => "tabs-#{i}", :href => "#0"} 
+                    = locale == 'en' ? c.name : c.name_rom
+                    / = locale == 'en' ? c.description : c.description_rom
+          %ul.tabs-content
+            = form_tag recruiter_job_candidate_save_answers_path(@candidate.job_list_id, @candidate), id: "answers_#{@candidate.id}" do
+              - @categories.each_with_index do |c, i|
+                - subcat_size = c.subcategories.size
+
+                %li{"data-content" => "tabs-#{i}"}
+                  - c.subcategories.each_with_index do |s, j| 
+                    .subcategory-wrapper
+                      .subcategory-header
+                        .col-grid.column-5
+                          %h3
+                            = locale == 'en' ? s.name : s.name_rom
+                        .col-grid.column-1
+                          .toggle
+                            .action-icon
+                      .subcategory-body
+                        .subcategory-description-wrapper
+                          .col-grid.column-1
+                            .description-icon
+                              = image_tag "icons/tips.svg"
+                          .col-grid.column-5
+                            .description-text
+                              = locale == 'en' ? s.description : s.description_rom
+                        .subcategory-questions-wrapper
+                          - if @candidate.answers.empty?
+                            = fields_for :candidate_answers do |ff| 
+                              = hidden_field_tag :candidate_id, @candidate.id
+                              - s.questions.each do |q|
+                                .question-block
+                                  .col-grid.column-4
+                                    .s-question
+                                      = locale == 'en' ? q.body : q.body_rom
+                                  .col-grid.column-2
+                                    .s-radio
+                                      = ff.radio_button "#{q.id}", 1, checked: true
+                                      = label_tag :value_1, '1', :for => "candidate_answers_#{q.id}_1"
+
+                                      = ff.radio_button "#{q.id}", 2
+                                      = label_tag :value_2, '2', :for => "candidate_answers_#{q.id}_2"         
+
+                                      = ff.radio_button "#{q.id}", 3
+                                      = label_tag :value_3, '3', :for => "candidate_answers_#{q.id}_3"
+
+                                      = ff.radio_button "#{q.id}", 4
+                                      = label_tag :value_4, '4', :for => "candidate_answers_#{q.id}_4"
+
+                                      = ff.radio_button "#{q.id}", 5
+                                      = label_tag :value_5, '5', :for => "candidate_answers_#{q.id}_5"
+                            
+                        .col-grid.column-6
+                          .next-button.next
+                            - if i == 2 and j == subcat_size -1 
+                              = submit_tag "Submit"
+                            - else
+                              %a
+                                =t('buttons.next')

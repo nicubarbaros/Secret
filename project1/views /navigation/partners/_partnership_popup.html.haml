@@ -1,0 +1,20 @@
+%h2.section--header.item--center.bottom--line
+  = t('navigation.partnership_request.title')
+= form_for :partnership_offer, url: partnership_request_path, id: 'partnership--form', remote: true do |f|
+  .form--section-content
+    = f.label 'Membership type'
+    = f.collection_select :type, Partner.types, :second, :second
+  .form--section-content
+    = f.label 'Company Name'
+    = f.text_field :company_name, required: true
+  .form--section-content
+    = f.label 'Company Email'
+    = f.text_field :company_email, required: true, type: 'email'
+  .form--section-content
+    = f.label 'Message'
+    = f.text_area :message, required: false
+  .btn--text.primary
+    = link_to 'See offers', "#{request.protocol}#{request.host_with_port}#{partner_content.partnership_offer.url}", target: '_blank'
+  .btn--wrap.btn--fix.width
+  = f.submit t('buttons.submit'), class: 'btn btn--primary'
+

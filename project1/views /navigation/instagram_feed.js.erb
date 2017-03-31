@@ -1,0 +1,52 @@
+const CAROUSEL_SETTINGS = {
+  items:5,
+  loop:true,
+  autoplay:true,
+  autoplayTimeout:3000,
+  autoplayHoverPause:true,
+  lazyLoad: true,
+  mouseDrag: false,
+  touchDrag: true,
+  callbacks:true,
+  onInitialized: turbolinkHelper,
+  dots: false,
+
+  responsive:{
+    0:{
+      items:2,
+    },
+    640:{
+      items:4,
+    },
+    1024:{
+      items:5,
+    }
+  }
+}
+
+$("#instagram-feed").append("<%=j render partial:  'navigation/instagram_feed', locals: {feed: @feed}%>").owlCarousel(
+  CAROUSEL_SETTINGS
+);
+
+var $owl = $("#instagram-feed.owl-carousel");
+
+$owl.data('owlCarousel').destroy();
+
+$owl.owlCarousel(
+  CAROUSEL_SETTINGS
+);
+
+
+function turbolinkHelper() {
+  $owl.data('owlCarousel').destroy();
+
+  $owl.owlCarousel(
+    CAROUSEL_SETTINGS
+  );
+}
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+.submit-button, .add-item-button, .paypal-button{
+  input,
+  a,
+  &.info-button  {
+    background: $brand-color;
+    border: 1px solid $brand-color;
+    @include border-radius(3px);
+    
+    padding: 9px 24px;
+    
+    font-family: $roboto;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 16px;
+    color: $white-color;
+    text-transform: uppercase;
+    display: block;
+    
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.submit-button, .add-item-button, .paypal-button{
+  input,a {
+   &:hover {
+      background: #66BB6A;
+      border-color: #66BB6A;
+      @include box-shadow(0 0 0 3px #A5D6A7);
+    }
+  }
+}
+.submit-button, .paypal-button{
+  float: right;
+}
+
+.add-item-button {
+  margin-left: -12px;
+  float: left;
+}
+
+.edit-button {
+  a {
+    background: transparent;
+    border: 1px solid $top-nav-text-color;
+    color: $top-nav-text-color;
+
+    &:hover {
+      border-color: $edit-border-hover;
+      @include box-shadow(0 0 0 3px $edit-box-shadow);
+      background: transparent;
+    }
+  }
+}
+
+.info-button{
+  background: transparent !important;
+  padding: 15.5px 15px !important;
+  border: 1px solid $top-nav-text-color !important;
+  margin-left: 20px;
+  cursor: pointer;
+  
+  .info-icon {
+    width: 15px;
+    height: 3px;
+    background: asset-url("icons/more-btn-2.svg") no-repeat;
+    }
+
+    &:hover {
+      background: none  !important;
+      border-color: $edit-border-hover !important;
+      @include box-shadow(0 0 0 3px $edit-box-shadow);
+    }
+}
+    

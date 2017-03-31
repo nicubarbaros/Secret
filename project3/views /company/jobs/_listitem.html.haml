@@ -1,0 +1,16 @@
+.list-item.bottom-border{:id => "itemid-#{jl.id}"}
+  .col-grid.col-6
+    .title
+      - if jl.name
+        = link_to jl.name, company_job_path(jl)
+  .col-grid.col-1
+    %span
+      = jl.candidates.count
+  .col-grid.col-1
+    %span
+      = jl.created_at.strftime("%d %b %Y")
+  .col-grid.col-1
+    %span.important
+      = t("alg.focus.#{jl.focus.downcase}")
+  .col-grid.col-1
+    = render :partial => 'layouts/optionbox', :locals => {:delete => company_job_path(jl), :edit => edit_company_job_path(jl)}
